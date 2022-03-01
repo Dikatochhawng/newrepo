@@ -358,20 +358,16 @@ def emiko_about_callback(update, context):
     query = update.callback_query
     if query.data == "emiko_":
         query.message.edit_text(
-            text=""" ➪ Keihi *𝕃𝕪𝕟𝕟* ka ni a, a hnuai ami te khu group enkawl tu a min hman chuan ka ti thei e.
-☞  Lynn Bot chungchang i hriat chian duh chuan :- [HEI HI HMET RAWH](https://telegra.ph/Lynn-Bot-tutorial-05-18)
-☞︎︎︎ *Members thar te ka lo lawmlut thei.*
-☞︎︎︎ *Memebers te group a nawilo turin ka khuahkhirh thei.*
-☞︎︎︎ *Hla Download nan min hmang thei.* 
-   
-☞︎︎︎ *Google a thil search tu atan min hmang thei.*
-☞︎︎︎ Harsatna i tawh hun a i buai loh nan [MIZO ANDROID USERS](https://t.me/puituflynn) hi lo join ngei ang che. 
-    \n_Bot chungchang bik a zawhna i neih chuan a chung a Group khi Join la ilo zawt thin dawn nia._
-    \n_Thildang Android kaihhnawih lam pawh zawh theih reng ani bawk e._
-    \n_Nangma puala Bot i siam ve duh anih chuan @lynnsupportgroup hi ilo join dawn nia.",
+            text="๏ I'm *Emiko*, a powerful group management bot built to help you manage your group easily."
+            "\n• I can restrict users."
+            "\n• I can greet users with customizable welcome messages and even set a group's rules."
+            "\n• I have an advanced anti-flood system."
+            "\n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
+            "\n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
+            "\n• I check for admins' permissions before executing any command and more stuffs"
+            "\n\n_Emiko's licensed under the GNU General Public License v3.0_"
+            "\n\n Click on button bellow to get basic help for EmikoRobot.",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
                 [
                  [
                     InlineKeyboardButton(text="Admins", callback_data="emiko_admin"),
