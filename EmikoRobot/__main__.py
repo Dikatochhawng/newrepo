@@ -82,18 +82,18 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Chibai {} !*
-Kei hi i Group enkawl tur a [Didiktea](https://t.me/Didiktea) siam ka ni.
+*Hello {} !*
+✪ I'm an anime-theme management bot [✨](https://telegra.ph/file/11b5922a33de9968cedfe.jpg)
 ────────────────────────
 × *Uptime:* `{}`
 × `{}` *users, across* `{}` *chats.*
 ────────────────────────
-A hnuai a *Get Help* tih khu hmet la ka thil tihtheih te i hre thei ang.
+✪ Hit /help to see my available commands.
 """
 
 buttons = [
     [
-        InlineKeyboardButton(text="Lynn Bot chungchang", callback_data="emiko_"),
+        InlineKeyboardButton(text="About Emiko Robot", callback_data="emiko_"),
     ],
     [
         InlineKeyboardButton(text="Get Help", callback_data="help_back"),
@@ -103,17 +103,19 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="➕ Lynn Group A Add Na 🔘", url=f"t.me/{bu}?startgroup=new"),
+            text="➗ Add Emiko To Your Group ➗", url=f"t.me/{bu}?startgroup=new"),
     ],
 ]
 
 
 HELP_STRINGS = """
-A hnuai a Button te khu hmet la ka tih theihte i hre thei ang."""
+Click on the button bellow to get description about specifics command."""
 
 
-DONATE_STRING = """I donate duh avangin kan lawm e! \
- Private in Bot neitu hi i be dawn nia ."""
+DONATE_STRING = """Heya, glad to hear you want to donate!
+ You can support the project by contacting @excrybaby \
+ Supporting isnt always financial! \
+ Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -227,7 +229,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            f"👋 Chibai, kei hi {dispatcher.bot.first_name} ka ni a. Group ah minlo add ve dawn nia.",
+            f"👋 Hi, I'm {dispatcher.bot.first_name}. Nice to meet You.",
             parse_mode=ParseMode.HTML
        )
 
@@ -303,7 +305,7 @@ def help_button(update, context):
         if mod_match:
             module = mod_match.group(1)
             text = (
-                "Hei hi *{}* module chungchang ani e:\n".format(
+                "Here is the help for the *{}* module:\n".format(
                     HELPABLE[module].__mod_name__
                 )
                 + HELPABLE[module].__help__
@@ -368,6 +370,8 @@ def emiko_about_callback(update, context):
             "\n\n_Emiko's licensed under the GNU General Public License v3.0_"
             "\n\n Click on button bellow to get basic help for EmikoRobot.",
             parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
                 [
                  [
                     InlineKeyboardButton(text="Admins", callback_data="emiko_admin"),
@@ -375,10 +379,10 @@ def emiko_about_callback(update, context):
                  ],
                  [
                     InlineKeyboardButton(text="Support", callback_data="emiko_support"),
-                    InlineKeyboardButton(text="Bot siamtu", callback_data="emiko_credit"),
+                    InlineKeyboardButton(text="Credits", callback_data="emiko_credit"),
                  ],
                  [
-                    InlineKeyboardButton(text="Source Code", url="https://github.com/Didiktea9/lynn"),
+                    InlineKeyboardButton(text="Source Code", url="https://github.com/kennedy-ex/EmikoRobot"),
                  ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="emiko_back"),
@@ -404,7 +408,7 @@ def emiko_about_callback(update, context):
     elif query.data == "emiko_admin":
         query.message.edit_text(
             text=f"*๏ Let's make your group bit effective now*"
-            "\nCongragulations, Lynn now ready to manage your group."
+            "\nCongragulations, EmikoRobot now ready to manage your group."
             "\n\n*Admin Tools*"
             "\nBasic Admin tools help you to protect and powerup your group."
             "\nYou can ban members, Kick members, Promote someone as admin through commands of bot."
@@ -431,14 +435,14 @@ def emiko_about_callback(update, context):
         )
     elif query.data == "emiko_support":
         query.message.edit_text(
-            text="*๏ Lynn support chats*"
-            "\nJoin My Support Group/Channel for see or report a problem on Lynn.",
+            text="*๏ Emiko support chats*"
+            "\nJoin My Support Group/Channel for see or report a problem on Emiko.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Support", url="t.me/lynnsupportgroup"),
-                    InlineKeyboardButton(text="Channel", url="https://t.me/androidusersmizo),
+                    InlineKeyboardButton(text="Support", url="t.me/emikosupport"),
+                    InlineKeyboardButton(text="Updates", url="https://t.me/KennedyProject"),
                  ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
@@ -451,15 +455,31 @@ def emiko_about_callback(update, context):
 
     elif query.data == "emiko_credit":
         query.message.edit_text(
-            text=f"๏ Bot Siamtu Pa\n"
-            "\nHere Developers Making And Give Inspiration For Made Lynn",
+            text=f"๏ Credis for Emiko\n"
+            "\nHere Developers Making And Give Inspiration For Made The EmikoRobot",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Didiktea", url="https://t.me/Didiktea"),
+                    InlineKeyboardButton(text="sena-ex", url="https://github.com/kennedy-ex"),
+                    InlineKeyboardButton(text="TheHamkerCat", url="https://github.com/TheHamkerCat"),
                  ],
-                 
+                 [
+                    InlineKeyboardButton(text="Feri", url="https://github.com/FeriEXP"),
+                    InlineKeyboardButton(text="riz-ex", url="https://github.com/riz-ex"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Anime Kaizoku", url="https://github.com/animekaizoku"),
+                    InlineKeyboardButton(text="TheGhost Hunter", url="https://github.com/HuntingBots"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Inuka Asith", url="https://github.com/inukaasith"),
+                    InlineKeyboardButton(text="Noob-Kittu", url="https://github.com/noob-kittu"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Queen Arzoo", url="https://github.com/QueenArzoo"),
+                    InlineKeyboardButton(text="Paul Larsen", url="https://github.com/PaulSonOfLars"),
+                 ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
                  ]
