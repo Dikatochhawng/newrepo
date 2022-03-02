@@ -191,9 +191,9 @@ if is_module_loaded(FILENAME):
     __help__ = """
 ──「 Log channel 」──
 
-❂ /logchannel*:* Log channel siam en na.get log channel info
+❂ /logchannel*:* Log channel siam en na.
 ❂ /setlog*:* Log channel siamna.
-❂ /unsetlog*:* Log channel sut na..
+❂ /unsetlog*:* Log channel sut na.
 
 *A Tihdan*:
 
