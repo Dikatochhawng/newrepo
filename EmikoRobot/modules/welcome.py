@@ -1163,29 +1163,24 @@ def user_captcha_button(update: Update, context: CallbackContext):
 WELC_HELP_TXT = (
     "Your group's welcome/goodbye messages can be personalised in multiple ways. If you want the messages"
     " to be individually generated, like the default welcome message is, you can use *these* variables:\n"
-    "  • `{first}`*:* this represents the user's *first* name\n"
-    "  • `{last}`*:* this represents the user's *last* name. Defaults to *first name* if user has no "
-    "last name.\n"
-    "  • `{fullname}`*:* this represents the user's *full* name. Defaults to *first name* if user has no "
-    "last name.\n"
-    "  • `{username}`*:* this represents the user's *username*. Defaults to a *mention* of the user's "
-    "first name if has no username.\n"
-    "  • `{mention}`*:* this simply *mentions* a user - tagging them with their first name.\n"
-    "  • `{id}`*:* this represents the user's *id*\n"
-    "  • `{count}`*:* this represents the user's *member number*.\n"
-    "  • `{chatname}`*:* this represents the *current chat name*.\n"
-    "\nEach variable MUST be surrounded by `{}` to be replaced.\n"
-    "Welcome messages also support markdown, so you can make any elements bold/italic/code/links. "
-    "Buttons are also supported, so you can make your welcomes look awesome with some nice intro "
-    "buttons.\n"
-    f"To create a button linking to your rules, use this: `[Rules](buttonurl://t.me/{dispatcher.bot.username}?start=group_id)`. "
-    "Simply replace `group_id` with your group's id, which can be obtained via /id, and you're good to "
+    "  • `{first}`*:* tih i dah chuan user hming hmasa kha alang ang\n"
+    "  • `{last}`*:* tih i dah chuan user hming hnuhnung zawk kha alang ang.\n"
+    "  • `{fullname}`*:* tih i dah chuan an hmingpum alang ang.\n"
+    "  • `{username}`*:* tih i dah chuan username alang ang.\n"
+    "  • `{mention}`*:* tih i dah chuan member thar kha ka mention ang.\n"
+    "  • `{id}`*:* tih i dah chuan an *ID* alang ang.\n"
+    "  • `{count}`*:* tih i dah chuan an member nihna zat alang ang.\n"
+    "  • `{chatname}`*:* tih i dah chuan Group hming alang an.\n\n"
+    "\nBracket chuar {} hi hman ngei ngei tur aw, chuan welcome message ah hian button te a dah\n"
+    "vek a, a tihdan chu /markdownhelp tih hi lo thawn la i chhiar thei ang.\n"
+    "Buttons i hman chuan, welcome message a ti langnalh duh bawk.\n\n"
+    f"Button hmang a rules i set duh chuan tiang hian i set dawn nia: `[Rules](buttonurl://t.me/{dispatcher.bot.username}?start=group_id)`. \n"
+    "Khita `group_id` with your group's id, which can be obtained via /id, and you're good to "
     "go. Note that group ids are usually preceded by a `-` sign; this is required, so please don't "
     "remove it.\n"
     "You can even set images/gifs/videos/voice messages as the welcome message by "
     "replying to the desired media, and calling `/setwelcome`."
 )
-
 WELC_MUTE_HELP_TXT = (
     "You can get the bot to mute new people who join your group and hence prevent spambots from flooding your group. "
     "The following options are possible:\n"
@@ -1236,21 +1231,21 @@ def __chat_settings__(chat_id, _):
 
 __help__ = """
 *Admins only:*
-❂ /welcome <on/off>*:* enable/disable welcome messages.
-❂ /welcome*:* shows current welcome settings.
-❂ /welcome noformat*:* shows current welcome settings, without the formatting - useful to recycle your welcome messages!
-❂ /goodbye*:* same usage and args as `/welcome`.
-❂ /setwelcome <sometext>*:* set a custom welcome message. If used replying to media, uses that media.
-❂ /setgoodbye <sometext>*:* set a custom goodbye message. If used replying to media, uses that media.
-❂ /resetwelcome*:* reset to the default welcome message.
-❂ /resetgoodbye*:* reset to the default goodbye message.
-❂ /cleanwelcome <on/off>*:* On new member, try to delete the previous welcome message to avoid spamming the chat.
-❂ /welcomemutehelp*:* gives information about welcome mutes.
-❂ /cleanservice <on/off*:* deletes telegrams welcome/left service messages.
- *Example:*
+❂ /welcome <on/off>*:* i on chuan mi ka welcome anga, i off chuan ka welcome theilo ang.
+❂ /welcome*:* Group a welcome message an hman mek en na.
+❂ /welcome noformat*:* Format tello a welcome message enna!
+❂ /goodbye*:* Group in goodbye message an hman en na.
+❂ /setwelcome <thu>*:* Welcome message tur siamna.
+❂ /setgoodbye <sometext>*:* Goodbye message tur siamna.
+❂ /resetwelcome*:* Welcome message i siam sa sut na, i sut chuan keimah a awmsa rin ani ang.
+❂ /resetgoodbye*:* Heipawh goodbye message i siam sa sut na.
+❂ /cleanwelcome <on/off>*:* Group a lut thar an awm apiang in he mi hi i on chuan welcome message thar awm rual in a hlui delete zel ani ang.
+❂ /welcomemutehelp*:* Welcome mute chungchang hriatna.
+❂ /cleanservice <on/off*:* Group a member lut thar an awm a Telegram service message delete ani ang.
+ *Entirna:*
 user joined chat, user left chat.
 *Welcome markdown:*
-❂ /welcomehelp*:* view more formatting information for custom welcome/goodbye messages.
+❂ /welcomehelp*:* Welcome/Goodbye message vel a thil hming leh a dang te dah awlsam dan en na.
 """
 
 NEW_MEM_HANDLER = MessageHandler(
