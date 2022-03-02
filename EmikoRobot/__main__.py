@@ -88,7 +88,7 @@ PM_START_TEXT = """
 × *Uptime:* `{}`
 × `{}` *users, across* `{}` *chats.*
 ────────────────────────
-✪ Hit /help to see my available commands.
+*❍ Kan Sakruang Mizoram Tan❍*
 """
 
 buttons = [
@@ -109,14 +109,13 @@ buttons = [
 
 
 HELP_STRINGS = """
-Click on the button bellow to get description about specifics command."""
+*『Thil tihtheih tamtak ka nei a, i group ah min Add in min han hmang chhin la i hre mai ang.』*"""
 
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @excrybaby \
- Supporting isnt always financial! \
- Those who cannot provide monetary support are welcome to help us develop the bot at ."""
-
+DONATE_STRING = """wow, I donate dawn avangin ka lawm e!
+ Donate i duh tak tak chuan [Heihi hmet la](t.me/puituflynn) \
+ #donate tih i thawn dawn nia. A nihloh pawhin Bot neitu [Didiktea](t.me/Didiktea) \
+ hi private in i be dawn nia ."""
 IMPORTED = {}
 MIGRATEABLE = []
 HELPABLE = {}
@@ -229,7 +228,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            f"👋 Hi, I'm {dispatcher.bot.first_name}. Nice to meet You.",
+            f"👋 Chibai, Kei hi {dispatcher.bot.first_name} ka ni a. I Group ah min Add ve la aw.",
             parse_mode=ParseMode.HTML
        )
 
@@ -305,7 +304,7 @@ def help_button(update, context):
         if mod_match:
             module = mod_match.group(1)
             text = (
-                "Here is the help for the *{}* module:\n".format(
+                "Hei hi *{}* module chungchang ani:\n".format(
                     HELPABLE[module].__mod_name__
                 )
                 + HELPABLE[module].__help__
@@ -315,7 +314,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="help_back")]]
                 ),
             )
 
@@ -360,15 +359,15 @@ def emiko_about_callback(update, context):
     query = update.callback_query
     if query.data == "emiko_":
         query.message.edit_text(
-            text="๏ I'm *Emiko*, a powerful group management bot built to help you manage your group easily."
-            "\n• I can restrict users."
-            "\n• I can greet users with customizable welcome messages and even set a group's rules."
-            "\n• I have an advanced anti-flood system."
-            "\n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
-            "\n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
-            "\n• I check for admins' permissions before executing any command and more stuffs"
-            "\n\n_Emiko's licensed under the GNU General Public License v3.0_"
-            "\n\n Click on button bellow to get basic help for EmikoRobot.",
+            text="๏  Keihi *𝕃𝕪𝕟𝕟* ka ni a, a hnuai ami te khu group enkawl tu a min hman chuan ka ti thei e."
+            "\n• Lynn Bot chungchang i hriat chian duh chuan :- [HEI HI HMET RAWH](https://telegra.ph/Lynn-Bot-tutorial-05-18)."
+            "\n• Members thar te ka lo lawmlut thei."
+            "\n• Memebers te group a nawilo turin ka khuahkhirh thei."
+            "\n• Hla Download nan min hmang thei."
+            "\n• Google a thil search tu atan min hmang thei."
+            "\n• Harsatna i tawh hun a i buai loh nan [MIZO ANDROID USERS](https://t.me/puituflynn) hi lo join ngei ang che"
+            "\n\n_Nangma puala Bot i siam ve duh anih chuan @lynnsupportgroup hi ilo join dawn nia_"
+            "\n\n A hnuai a button te khu hmet la ka tih theih dang i hre thei bawk ang.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -382,7 +381,7 @@ def emiko_about_callback(update, context):
                     InlineKeyboardButton(text="Credits", callback_data="emiko_credit"),
                  ],
                  [
-                    InlineKeyboardButton(text="Source Code", url="https://github.com/kennedy-ex/EmikoRobot"),
+                    InlineKeyboardButton(text="Source Code", url="https://github.com/Didiktea9/lynn"),
                  ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="emiko_back"),
@@ -407,14 +406,14 @@ def emiko_about_callback(update, context):
 
     elif query.data == "emiko_admin":
         query.message.edit_text(
-            text=f"*๏ Let's make your group bit effective now*"
-            "\nCongragulations, EmikoRobot now ready to manage your group."
+            text=f"*๏ I Group ti changtlunglawk ang aw*"
+            "\nI Group enkawl turin Lynn a inpeih tawh e."
             "\n\n*Admin Tools*"
-            "\nBasic Admin tools help you to protect and powerup your group."
-            "\nYou can ban members, Kick members, Promote someone as admin through commands of bot."
+            "\nAdmin tools hi Admin ten an tihtheih bik te an ni."
+            "\nMembers te i Kick thei a, command hmang hian admin ah i promote thei bawk."
             "\n\n*Greetings*"
-            "\nLets set a welcome message to welcome new users coming to your group."
-            "\nsend `/setwelcome [message]` to set a welcome message!",
+            "\nI group a members thar tetan welcome message te ilo set thei ang."
+            "\na tihdan chu `/setwelcome [i welcome na thu]` tiang sawn Group ah thawn in i set thei ang!",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -424,10 +423,10 @@ def emiko_about_callback(update, context):
 
     elif query.data == "emiko_notes":
         query.message.edit_text(
-            text=f"<b>๏ Setting up notes</b>"
-            f"\nYou can save message/media/audio or anything as notes"
-            f"\nto get a note simply use # at the beginning of a word"
-            f"\n\nYou can also set buttons for notes and filters (refer help menu)",
+            text=f"<b>๏ Notes Save Dan</b>"
+            f"\nGroup ah message/media/audio emaw engpawh notes ah i save thei"
+            f"\nI note save i kohchhuah duh chuan note hming hma ah # hi i dah thin dawn nia"
+            f"\n\nFilter leh note hi Button tel pawn a set theih bawk",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Go Back", callback_data="emiko_")]]
@@ -436,12 +435,12 @@ def emiko_about_callback(update, context):
     elif query.data == "emiko_support":
         query.message.edit_text(
             text="*๏ Lynn support chats*"
-            "\nJoin My Support Group/Channel for see or report a problem on Emiko.",
+            "\nLynn Bot aharsatna i tawh loh nan Support Group/Channel hi ilo join dawn nia.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Support", url="t.me/lynnsupportgroup"),
+                    InlineKeyboardButton(text="Support Group", url="t.me/lynnsupportgroup"),
                     InlineKeyboardButton(text="Channel", url="https://t.me/androidusersmizo"),
                  ],
                  [
@@ -455,30 +454,13 @@ def emiko_about_callback(update, context):
 
     elif query.data == "emiko_credit":
         query.message.edit_text(
-            text=f"๏ Credis for Lynn\n"
-            "\nHere Developers Making And Give Inspiration For Made The EmikoRobot",
+            text=f"๏ Lynn Bot Siamtu\n"
+            "\nRIm tak leh hah tak aHe Bot hi siam ani",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="sena-ex", url="https://github.com/kennedy-ex"),
-                    InlineKeyboardButton(text="TheHamkerCat", url="https://github.com/TheHamkerCat"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Feri", url="https://github.com/FeriEXP"),
-                    InlineKeyboardButton(text="riz-ex", url="https://github.com/riz-ex"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Anime Kaizoku", url="https://github.com/animekaizoku"),
-                    InlineKeyboardButton(text="TheGhost Hunter", url="https://github.com/HuntingBots"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Inuka Asith", url="https://github.com/inukaasith"),
-                    InlineKeyboardButton(text="Noob-Kittu", url="https://github.com/noob-kittu"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Queen Arzoo", url="https://github.com/QueenArzoo"),
-                    InlineKeyboardButton(text="Paul Larsen", url="https://github.com/PaulSonOfLars"),
+                    InlineKeyboardButton(text="Didiktea", url="https://t.me/Didiktea"),
                  ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
@@ -491,17 +473,17 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text="๏›› This advance command for Musicplayer."
-            "\n\n๏ Command for admins only."
-            "\n • `/reload` - For refreshing the adminlist."
-            "\n • `/pause` - To pause the playback."
-            "\n • `/resume` - To resuming the playback You've paused."
-            "\n • `/skip` - To skipping the player."
-            "\n • `/end` - For end the playback."
-            "\n • `/musicplayer <on/off>` - Toggle for turn ON or turn OFF the musicplayer."
-            "\n\n๏ Command for all members."
-            "\n • `/play` <query /reply audio> - Playing music via YouTube."
-            "\n • `/playlist` - To playing a playlist of groups or your personal playlist",
+            text="๏›› Musicplayer Command te chu hengtehi an ni."
+            "\n\n๏Admin Tan chiah a Command hman theih te."
+            "\n • `/reload` - Adminlist Refresh Na."
+            "\n • `/pause` - Hla play lai Pause na."
+            "\n • `/resume` - I hla pause mek Resume na."
+            "\n • `/skip` - Hla skip na."
+            "\n • `/end` - Hla play tih tawp na."
+            "\n • `/musicplayer <on/off>` - Music layer ON leh OFF na."
+            "\n\n๏ Members te command hman theih te."
+            "\n • `/play` <Hla hming /Audio reply> - YouTube ami hla play na."
+            "\n • `/playlist` - Playlist en na",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -535,7 +517,7 @@ def get_help(update: Update, context: CallbackContext):
         if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
             module = args[1].lower()
             update.effective_message.reply_text(
-                f"Contact me in PM to get help of {module.capitalize()}",
+                f"Private ah  {module.capitalize()} i hriat duh chuan minlo be rawh",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -551,7 +533,7 @@ def get_help(update: Update, context: CallbackContext):
             )
             return
         update.effective_message.reply_text(
-            "Contact me in PM to get the list of possible commands.",
+            "Command hman theih te i hriat duh chuan minlo Private rawh.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -568,7 +550,7 @@ def get_help(update: Update, context: CallbackContext):
     elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
         module = args[1].lower()
         text = (
-            "Here is the available help for the *{}* module:\n".format(
+            " Heihi*{}* module chungchang ani e:\n".format(
                 HELPABLE[module].__mod_name__
             )
             + HELPABLE[module].__help__
@@ -594,14 +576,14 @@ def send_settings(chat_id, user_id, user=False):
             )
             dispatcher.bot.send_message(
                 user_id,
-                "These are your current settings:" + "\n\n" + settings,
+                "I Settings hmanlai mek chu heihi ani:" + "\n\n" + settings,
                 parse_mode=ParseMode.MARKDOWN,
             )
 
         else:
             dispatcher.bot.send_message(
                 user_id,
-                "Seems like there aren't any user specific settings available :'(",
+                "Setting members te tan bik riau a siam a awmlo :'(",
                 parse_mode=ParseMode.MARKDOWN,
             )
 
@@ -610,7 +592,7 @@ def send_settings(chat_id, user_id, user=False):
             chat_name = dispatcher.bot.getChat(chat_id).title
             dispatcher.bot.send_message(
                 user_id,
-                text="Which module would you like to check {}'s settings for?".format(
+                text="Eng module {}'s setting nge i hriat duh?".format(
                     chat_name
                 ),
                 reply_markup=InlineKeyboardMarkup(
@@ -620,8 +602,8 @@ def send_settings(chat_id, user_id, user=False):
         else:
             dispatcher.bot.send_message(
                 user_id,
-                "Seems like there aren't any chat settings available :'(\nSend this "
-                "in a group chat you're admin in to find its current settings!",
+                "Group settings engmah a awm rihlo :'(\nSend this "
+                "Group a admin i nih chuan nangman i set thei ang!",
                 parse_mode=ParseMode.MARKDOWN,
             )
 
@@ -662,8 +644,8 @@ def settings_button(update: Update, context: CallbackContext):
             curr_page = int(prev_match.group(2))
             chat = bot.get_chat(chat_id)
             query.message.reply_text(
-                "Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(chat.title),
+                "Chibai! Setting tlem a zawng {} hian a awm a- i duh leh "
+                "tha i tih chu han en chhin la.".format(chat.title),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(
                         curr_page - 1, CHAT_SETTINGS, "stngs", chat=chat_id
@@ -676,8 +658,8 @@ def settings_button(update: Update, context: CallbackContext):
             next_page = int(next_match.group(2))
             chat = bot.get_chat(chat_id)
             query.message.reply_text(
-                "Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(chat.title),
+                "Chibai! Setting tlem a zawng {} hian a awm a- i duh leh "
+                "tha i tih chu han en chhin la.".format(chat.title),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(
                         next_page + 1, CHAT_SETTINGS, "stngs", chat=chat_id
@@ -689,8 +671,8 @@ def settings_button(update: Update, context: CallbackContext):
             chat_id = back_match.group(1)
             chat = bot.get_chat(chat_id)
             query.message.reply_text(
-                text="Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(escape_markdown(chat.title)),
+                text="Chibai! Setting tlem a zawng {} hian a awm a- i duh leh "
+                "tha i tih chu han en chhin la.".".format(escape_markdown(chat.title)),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)
@@ -717,7 +699,7 @@ def get_settings(update: Update, context: CallbackContext):
     # ONLY send settings in PM
     if chat.type != chat.PRIVATE:
         if is_user_admin(chat, user.id):
-            text = "Click here to get this chat's settings, as well as yours."
+            text = "He Group setting i hriat duh chuan min hmet rawh."
             msg.reply_text(
                 text,
                 reply_markup=InlineKeyboardMarkup(
@@ -734,7 +716,7 @@ def get_settings(update: Update, context: CallbackContext):
                 ),
             )
         else:
-            text = "Click here to check your settings."
+            text = "I setting i hriat duh chuan min hmet rawh."
 
     else:
         send_settings(chat.id, user.id, True)
@@ -751,7 +733,7 @@ def donate(update: Update, context: CallbackContext):
 
         if OWNER_ID != 1606221784:
             update.effective_message.reply_text(
-                "I'm free for everyone ❤️ If you wanna make me smile, just join"
+                "Tu tan pawn a freein ka hmantheih a ❤️ ka hlim i duh chuan, hei hi lo join la"
                 "[My Channel]({})".format(DONATION_LINK),
                 parse_mode=ParseMode.MARKDOWN,
             )
@@ -765,11 +747,11 @@ def donate(update: Update, context: CallbackContext):
             )
 
             update.effective_message.reply_text(
-                "I've PM'ed you about donating to my creator!"
+                "Private ah Minsiam tu kalo thawn ang che!"
             )
         except Unauthorized:
             update.effective_message.reply_text(
-                "Contact me in PM first to get donation information."
+                "Donation chungchang i hriat duh chuan private ah minlo zawt rawh."
             )
 
 
@@ -798,7 +780,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}", 
-                "👋 Hi, i'm alive.",
+                "Bot Started.",
                 parse_mode=ParseMode.MARKDOWN
             )
         except Unauthorized:
