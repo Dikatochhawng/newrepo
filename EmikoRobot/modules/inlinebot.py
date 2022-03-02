@@ -5,7 +5,7 @@ from EmikoRobot.utils.pluginhelper import fetch
 from EmikoRobot.utils.inlinefuncs import *
 
 __MODULE__ = "Inline"
-__HELP__ = """See inline for help related to inline"""
+__HELP__ = """Inline button hmang a thil zawnna"""
 
 
 @app.on_inline_query()
