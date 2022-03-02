@@ -13,10 +13,10 @@ from EmikoRobot.utils.functions import make_carbon
 @capture_err
 async def carbon_func(_, message):
     if not message.reply_to_message:
-        return await message.reply_text("`Reply to a text message to make carbon.`")
+        return await message.reply_text("`Carbon siam tur chuanText message reply rawh.`")
     if not message.reply_to_message.text:
-        return await message.reply_text("`Reply to a text message to make carbon.`")
-    m = await message.reply_text("`Preparing Carbon`")
+        return await message.reply_text("`Carbon siam tur chuanText message reply rawh.`")
+    m = await message.reply_text("`Carbon Buatsaih mek ani`")
     carbon = await make_carbon(message.reply_to_message.text)
     await m.edit("`Uploading`")
     await pbot.send_photo(message.chat.id, carbon)
@@ -24,29 +24,29 @@ async def carbon_func(_, message):
     carbon.close()
 
 
-MEMEK = "https://telegra.ph/file/11b5922a33de9968cedfe.jpg"
+MEMEK = "https://telegra.ph/file/13bfc9bb06beb9bb38df6.jpg"
 
 @pbot.on_message(filters.command("repo"))
 async def repo(_, message):
     await message.reply_photo(
         photo=MEMEK,
-        caption=f"""✨ **Hey I'm Emiko Robot** 
+        caption=f"""✨ **Chibai kei hi Lynn ka ni** 
 
-**Owner repo : [sena-ex](https://t.me/excrybaby)**
+**Owner repo : [Didiktea](https://t.me/Didiktea)**
 **Python Version :** `{y()}`
 **Library Version :** `{o}`
 **Telethon Version :** `{s}`
 **Pyrogram Version :** `{z}`
 
-**Create your own with click button bellow.**
+**Nangma Puala i neih ve duh chuan a hnuai a button khu hmet rawh.**
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "Repo", url="https://github.com/kennedy-ex/emikorobot"), 
+                        "Repo", url="https://github.com/Didiktea9/lynn"), 
                     InlineKeyboardButton(
-                        "Support", url="https://t.me/emikosupport")
+                        "Support", url="https://t.me/lynnsupportgroup")
                 ]
             ]
         )
