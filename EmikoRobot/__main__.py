@@ -672,7 +672,7 @@ def settings_button(update: Update, context: CallbackContext):
             chat = bot.get_chat(chat_id)
             query.message.reply_text(
                 text="Chibai! Setting tlem a zawng {} hian a awm a- i duh leh "
-                "tha i tih chu han en chhin la.".".format(escape_markdown(chat.title)),
+                "tha i tih chu han en chhin la.".format(escape_markdown(chat.title)),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)
