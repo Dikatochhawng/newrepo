@@ -83,13 +83,13 @@ def gban(update: Update, context: CallbackContext):
 
     if not user_id:
         message.reply_text(
-            "You don't seem to be referring to a user or the ID specified is incorrect..",
+            "User name emaw ID emaw hi a diklo..",
         )
         return
 
     if int(user_id) in DEV_USERS:
         message.reply_text(
-            "That user is part of the Association\nI can't act against our own.",
+            "Heihi chu mi pawimawh ani a\nKa ban theilo.",
         )
         return
 
@@ -148,9 +148,9 @@ def gban(update: Update, context: CallbackContext):
         )
         if old_reason:
             message.reply_text(
-                "This user is already gbanned, for the following reason:\n"
+                "He user hi chu gban ani, A chhan chu:\n"
                 "<code>{}</code>\n"
-                "I've gone and updated it with your new reason!".format(
+                "Midang pawh fimkhur tlang ang u!".format(
                     html.escape(old_reason),
                 ),
                 parse_mode=ParseMode.HTML,
@@ -158,7 +158,7 @@ def gban(update: Update, context: CallbackContext):
 
         else:
             message.reply_text(
-                "This user is already gbanned, but had no reason set; I've gone and updated it!",
+                "He user hi chu gban ani tawh!",
             )
 
         return
@@ -487,18 +487,18 @@ def gbanstat(update: Update, context: CallbackContext):
         if args[0].lower() in ["on", "yes"]:
             sql.enable_gbans(update.effective_chat.id)
             update.effective_message.reply_text(
-                "Antispam is now enabled ✅ "
-                "I am now protecting your group from potential remote threats!",
+                "Antispam tihnun ani e ✅ "
+                "Mi chimawm lak atangin Group hi ka venghim e!",
             )
         elif args[0].lower() in ["off", "no"]:
             sql.disable_gbans(update.effective_chat.id)
             update.effective_message.reply_text(
-                "Antispan is now disabled ❌ " "Spamwatch is now disabled ❌",
+                "Antispan tih thih rih ani ❌ " "Spamwatch tih thih rih ani ❌",
             )
     else:
         update.effective_message.reply_text(
-            "Give me some arguments to choose a setting! on/off, yes/no!\n\n"
-            "Your current setting is: {}\n"
+            "I setting hman tur chu! on/off, yes/no!\n\n"
+            "I setting hman mek chu: {}\n"
             "When True, any gbans that happen will also happen in your group. "
             "When False, they won't, leaving you at the possible mercy of "
             "spammers.".format(sql.does_chat_gban(update.effective_chat.id)),
@@ -538,14 +538,14 @@ def __chat_settings__(chat_id, user_id):
 
 
 __help__ = f"""
-*Admins only:*
-❂ /antispam <on/off/yes/no>: Will toggle our antispam tech or return your current settings.
-Anti-Spam, used by bot devs to ban spammers across all groups. This helps protect \
-you and your groups by removing spam flooders as quickly as possible.
-Note: Users can appeal gbans or report spammers at @{SUPPORT_CHAT}
-❂ /flood: Get the current antiflood settings
-❂ /setflood <number/off/no>: Set the number of messages after which to take action on a user. Set to '0', 'off', or 'no' to disable.
-❂ /setfloodmode <action type>: Choose which action to take on a user who has been flooding. Options: ban/kick/mute/tban/tmute.
+*Admins Tan bik:*
+❂ /antispam <on/off/yes/no>: Antispam set na.
+Anti-Spam hi group a felfai zawk nan leh \
+Sapmmer ho lak aGroup venhim na tha tak ani.
+Note: Users ten @{SUPPORT_CHAT} ah hian an duh chuan ngaihdam dil in hremna hlihsakan ni ang.
+❂ /flood: Anti Flood in set dan en na.
+❂ /setflood <number/off/no>: 10 (tah hian number 3 aia tam hman tur), off emaw no tih khi a off leh na chu animai..
+❂ /setfloodmode <action type>: (ban emaw kick emaw mute emaw tban emaw tmute) : Hrem na tur a duh thlan na.
 """
 
 GBAN_HANDLER = CommandHandler("gban", gban, run_async=True)
