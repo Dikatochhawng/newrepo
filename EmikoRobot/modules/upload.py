@@ -83,7 +83,7 @@ async def tsh(event):
 
             str(time.time() - start)
             await orta.edit(
-                f"File Successfully Uploaded to TransferSh.\n\nLink 👉 {download_link}\nExpired Date 👉 {final_date}\n\nUploaded by *AsunaRobot*"
+                f"File Successfully Uploaded to TransferSh.\n\nLink 👉 {download_link}\nExpired Date 👉 {final_date}\n\nUpload tu *Lynnchawngthu_bot*"
             )
         except Exception as e:
             traceback.print_exc()
@@ -98,11 +98,11 @@ async def tmp(event):
     if event.reply_to_msg_id:
         start = time.time()
         url = await event.get_reply_message()
-        ilk = await event.respond("Downloading...")
+        ilk = await event.respond("Download mek...")
         try:
             file_path = await url.download_media(
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, ilk, start, "Downloading...")
+                    progress(d, t, ilk, start, "Download mek...")
                 )
             )
         except Exception as e:
@@ -118,12 +118,12 @@ async def tmp(event):
 
             str(time.time() - start)
             await orta.edit(
-                f"File Successfully Uploaded to TmpNinja.\n\nLink 👉 {download_link}\n\nUploaded by *AsunaRobot*"
+                f"File Successfully Uploaded to TmpNinja.\n\nLink 👉 {download_link}\n\nUpload tu *Lynnchawngthu_bot*"
             )
         except Exception as e:
             traceback.print_exc()
             print(e)
-            await event.respond(f"Uploading Failed\n\n**Error:** {e}")
+            await event.respond(f"Upload Fail\n\n**Error:** {e}")
 
     raise events.StopPropagation
 
@@ -133,7 +133,7 @@ async def up(event):
     if event.reply_to_msg_id:
         start = time.time()
         url = await event.get_reply_message()
-        ilk = await event.respond("Downloading...")
+        ilk = await event.respond("Download mek...")
 
         try:
             filename = os.path.join(DOWNLOADPATH, os.path.basename(url.text))
@@ -145,12 +145,12 @@ async def up(event):
         await ilk.delete()
 
         try:
-            orta = await event.respond("Uploading to Telegram...")
+            orta = await event.respond("Upload mek...")
 
             dosya = await bot.upload_file(
                 filename,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, orta, start, "Uploading to Telegram...")
+                    progress(d, t, orta, start, "Upload mek...")
                 ),
             )
 
@@ -159,7 +159,7 @@ async def up(event):
                 event.chat.id,
                 dosya,
                 force_document=True,
-                caption=f"Uploaded By *AsunaRobot*",
+                caption=f"Upload tu *Lynnchawngthu_bot*",
             )
         except Exception as e:
             traceback.print_exc()
