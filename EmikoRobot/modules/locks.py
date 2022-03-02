@@ -158,18 +158,18 @@ def lock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "Locked {} for non-admins in {}!".format(ltype, chat_name)
+                    text = "{} hi admin lo zawng tan {} ah hian lock ani!".format(ltype, chat_name)
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
                             update.effective_message,
-                            "This command is meant to use in group not in PM",
+                            "He command hi chu Group ah chiah a hman theih",
                         )
                         return ""
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = "Locked {} for non-admins!".format(ltype)
+                    text = "{} hi admin lo zawng tan {} ah hian lock ani!".format(ltype)
                 sql.update_lock(chat.id, ltype, locked=True)
                 send_message(update.effective_message, text, parse_mode="markdown")
 
@@ -191,14 +191,14 @@ def lock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "Locked {} for all non-admins in {}!".format(
+                    text = "{} hi admin lo zawng tan {} ah hian lock ani!".format(
                         ltype, chat_name
                     )
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
                             update.effective_message,
-                            "This command is meant to use in group not in PM",
+                            "He command hi chu Group ah chiah a hman theih",
                         )
                         return ""
                     chat = update.effective_chat
@@ -228,15 +228,15 @@ def lock(update, context) -> str:
                 )
             send_message(
                 update.effective_message,
-                "What are you trying to lock...? Try /locktypes for the list of lockables",
+                "Engthil nge lock i tum...? Lock theih te chu /locktypes ah khan en rawh",
             )
         else:
-            send_message(update.effective_message, "What are you trying to lock...?")
+            send_message(update.effective_message, "Engthil nge lock i tum...?")
 
     else:
         send_message(
             update.effective_message,
-            "I am not administrator or haven't got enough rights.",
+            "Admin ah min dahlo emaw he thil tihtheih na rights hi min pelo ani ang.",
         )
 
     return ""
@@ -260,12 +260,12 @@ def unlock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "Unlocked {} for everyone in {}!".format(ltype, chat_name)
+                    text = "He{} hi {} ami te tan unlock ani!".format(ltype, chat_name)
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
                             update.effective_message,
-                            "This command is meant to use in group not in PM",
+                            "He command hi chu Group a hman tur ania",
                         )
                         return ""
                     chat = update.effective_chat
@@ -292,12 +292,12 @@ def unlock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "Unlocked {} for everyone in {}!".format(ltype, chat_name)
+                    text = "{} hi {} ani tetan unlock ani!".format(ltype, chat_name)
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
                             update.effective_message,
-                            "This command is meant to use in group not in PM",
+                            "He command hi chu Group ah chiah a hman theih",
                         )
                         return ""
                     chat = update.effective_chat
@@ -328,11 +328,11 @@ def unlock(update, context) -> str:
                 )
             send_message(
                 update.effective_message,
-                "What are you trying to unlock...? Try /locktypes for the list of lockables.",
+                "Engthil nge unlock i tum...? Lock theih te chu /locktypes ah khan en rawh.",
             )
 
         else:
-            send_message(update.effective_message, "What are you trying to unlock...?")
+            send_message(update.effective_message, "Engthil nge unlock i tum...?")
 
     return ""
 
@@ -406,15 +406,15 @@ def del_lockables(update, context):
                         if not is_bot_admin(chat, context.bot.id):
                             send_message(
                                 update.effective_message,
-                                "I see a bot and I've been told to stop them from joining..."
-                                "but I'm not admin!",
+                                "Bot dang ka hmu a mahse join lo turin ka dang theilo..."
+                                "Admin ka nilo tlat!",
                             )
                             return
 
                         chat.ban_member(new_mem.id)
                         send_message(
                             update.effective_message,
-                            "Only admins are allowed to add bots in this chat! Get outta here.",
+                            "Admin te chauh in Bot an add thei.",
                         )
                         break
             else:
@@ -467,7 +467,7 @@ def build_lock_message(chat_id):
         # Building lock list string
         for x in locklist:
             res += "\n × {}".format(x)
-    res += "\n\n*" + "These are the current chat permissions:" + "*"
+    res += "\n\n*" + "Heng te hi Group permissions te chu anni:" + "*"
     for x in permslist:
         res += "\n × {}".format(x)
     return res
@@ -488,7 +488,7 @@ def list_locks(update, context):
         if update.effective_message.chat.type == "private":
             send_message(
                 update.effective_message,
-                "This command is meant to use in group not in PM",
+                "Hecommand hi chu Group hman tur bik ania",
             )
             return ""
         chat = update.effective_chat
@@ -536,27 +536,27 @@ def __chat_settings__(chat_id, user_id):
 
 
 __help__ = """
-Do stickers annoy you? or want to avoid people sharing links? or pictures? \
-You're in the right place!
-The locks module allows you to lock away some common items in the \
-telegram world; the bot will automatically delete them!
+Stickers te link te thlalak vel group a anlo post vak hi i ning thin em? \
+Pan tur diktak minlo pan ani!
+He locks module hi chuan a chung a kan sawi te khi alock vek thei a \
+an lo post chuan automatic in kalo delete zel ang!
 
-❂ /locktypes*:* Lists all possible locktypes
+❂ /locktypes*:* Lock/Unlock theih te en na.
 
-*Admins only:*
-❂ /lock <type>*:* Lock items of a certain type (not available in private)
-❂ /unlock <type>*:* Unlock items of a certain type (not available in private)
-❂ /locks*:* The current list of locks in this chat.
+*Admins Tan Bik:*
+❂ /lock <type>*:* Command zawh a i lock tur i dah a i thawn khan lock ani ang.
+❂ /unlock <type>*:* Lock tawh sa sut leh na.
+❂ /locks*:* Eng eng nge lock tih en na.
 
-Locks can be used to restrict a group's users.
-eg:
-Locking urls will auto-delete all messages with urls, locking stickers will restrict all \
-non-admin users from sending stickers, etc.
-Locking bots will stop non-admins from adding bots to the chat.
+Locks hi members te khuahkhirh nan a tha hle a ni.
+entirnan:
+URL i lock chuan link an post apiang automatic in a in delete zel ang, chutiang zelin adang pawh \
+admin lo in an thawn chu a in delete zel ang, etc.
+Bot i lock pawn admin lo chuan Group ah Bot an add theilo ang.
 
 *Note:*
-❂ Unlocking permission *info* will allow members (non-admins) to change the group information, such as the description or the group name
-❂ Unlocking permission *pin* will allow members (non-admins) to pinned a message in a group
+❂ I Group felfai tak a aawm i duh chuan lock hi hmang ve ngei ang che.
+❂ I Group permission kha enchiang la, on tur leh on loh tur chin thiar hrang thiam ang che.
 """
 
 __mod_name__ = "Locks"
