@@ -67,10 +67,10 @@ def gettime(update: Update, context: CallbackContext):
     try:
         query = message.text.strip().split(" ", 1)[1]
     except:
-        message.reply_text("Provide a country name/abbreviation/timezone to find.")
+        message.reply_text("Ram hming emaw/ram hming lamtawi emaw/timezone zawng tur chuan angai.")
         return
     send_message = message.reply_text(
-        f"Finding timezone info for <b>{query}</b>",
+        f"<b>{query}</b> timezone zawnmek ani",
         parse_mode=ParseMode.HTML,
     )
 
@@ -82,8 +82,8 @@ def gettime(update: Update, context: CallbackContext):
 
     if not result:
         send_message.edit_text(
-            f"Timezone info not available for <b>{query}</b>\n"
-            '<b>All Timezones:</b> <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">List here</a>',
+            f"<b>{query}</b> hi Time zone ka hmu zolo\n"
+            '<b>Timezone Zawng zawng:</b> <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">List heta hi</a>',
             parse_mode=ParseMode.HTML,
             disable_web_page_preview=True,
         )
