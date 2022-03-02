@@ -55,7 +55,7 @@ async def download_coroutine(session, url, file_name, event, start, bot):
                     try:
                         if total_length < downloaded:
                             total_length = downloaded
-                        current_message = """Downloading : {}%
+                        current_message = """Download mek : {}%
 URL: {}
 File Name: {}
 File Size: {}
