@@ -17,7 +17,7 @@ GIF_ID = "CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr
 def runs(update: Update, context: CallbackContext):
     temp = random.choice(fun_strings.RUN_STRINGS)
     if update.effective_user.id == 1170714920:
-        temp = "Run everyone, they just dropped a bomb 💣💣"
+        temp = "Tlanchhe ru, Bomb an lo vawm dawn ania 💣💣"
     update.effective_message.reply_text(temp)
 
 
@@ -298,7 +298,7 @@ def weebify(update: Update, context: CallbackContext):
         string = "  ".join(args).lower()
 
     if not string:
-        message.reply_text("Usage is `/weebify <text>`", parse_mode=ParseMode.MARKDOWN)
+        message.reply_text("A tihdan chu `/weebify <text>`", parse_mode=ParseMode.MARKDOWN)
         return
 
     for normiecharacter in string:
