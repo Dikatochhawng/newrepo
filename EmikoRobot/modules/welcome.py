@@ -863,14 +863,14 @@ def reset_goodbye(update: Update, context: CallbackContext) -> str:
 
     sql.set_custom_gdbye(chat.id, random.choice(sql.DEFAULT_GOODBYE_MESSAGES), sql.Types.TEXT)
     update.effective_message.reply_text(
-        "Successfully reset goodbye message to default!"
+        "Goodbye message hi default ah dah ani!"
     )
 
     return (
         f"<b>{html.escape(chat.title)}:</b>\n"
         f"#RESET_GOODBYE\n"
         f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-        f"Reset the goodbye message."
+        f"Goodbye message Reset ani."
     )
 
 
@@ -885,34 +885,34 @@ def welcomemute(update: Update, context: CallbackContext) -> str:
     if len(args) >= 1:
         if args[0].lower() in ("off", "no"):
             sql.set_welcome_mutes(chat.id, False)
-            msg.reply_text("I will no longer mute people on joining!")
+            msg.reply_text("Member ten Group anlo join in ka mute tawhlo ang!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"#WELCOME_MUTE\n"
                 f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
-                f"Has toggled welcome mute to <b>OFF</b>."
+                f"Hian welcome mute hi a <b>OFF</b>."
             )
         if args[0].lower() in ["soft"]:
             sql.set_welcome_mutes(chat.id, "soft")
             msg.reply_text(
-                "I will restrict users' permission to send media for 24 hours."
+                "Member thar te media thawn theilo turin 24 hours chhung ka khuahkhirh rih e."
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"#WELCOME_MUTE\n"
                 f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
-                f"Has toggled welcome mute to <b>SOFT</b>."
+                f"Hian welcome mute hi <b>SOFT</b> ah a dah e."
             )
         if args[0].lower() in ["strong"]:
             sql.set_welcome_mutes(chat.id, "strong")
             msg.reply_text(
-                "I will now mute people when they join until they prove they're not a bot.\nThey will have 120seconds before they get kicked."
+                "Tun atang chuan member thar te ka lo mute zel tawh ang mihring an ni tih sn prove hma chuan.\nKa kick hma in 120seconds an nei ang."
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"#WELCOME_MUTE\n"
                 f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
-                f"Has toggled welcome mute to <b>STRONG</b>."
+                f"Hian welcome mute hi <b>STRONG</b> ah a dah e."
             )
         if args[0].lower() in ["captcha"]:
             sql.set_welcome_mutes(chat.id, "captcha")
@@ -923,17 +923,17 @@ def welcomemute(update: Update, context: CallbackContext) -> str:
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"#WELCOME_MUTE\n"
                 f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
-                f"Has toggled welcome mute to <b>CAPTCHA</b>."
+                f"Hian welcome mute hi <b>CAPTCHA</b> ah a dah e."
             )
         msg.reply_text(
-            "Please enter `off`/`no`/`soft`/`strong`/`captcha`!",
+            "I duh ber hi thlang rawh `off`/`no`/`soft`/`strong`/`captcha`!",
             parse_mode=ParseMode.MARKDOWN,
         )
         return ""
     curr_setting = sql.welcome_mutes(chat.id)
     reply = (
-        f"\n Give me a setting!\nChoose one out of: `off`/`no` or `soft`, `strong` or `captcha` only! \n"
-        f"Current setting: `{curr_setting}`"
+        f"\n Setting i duh ber!\nhi han thlang teh le: `off`/`no` or `soft`, `strong` or `captcha`! \n"
+        f"Setting hman mek: `{curr_setting}`"
     )
     msg.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
     return ""
@@ -950,33 +950,33 @@ def clean_welcome(update: Update, context: CallbackContext) -> str:
         clean_pref = sql.get_clean_pref(chat.id)
         if clean_pref:
             update.effective_message.reply_text(
-                "I should be deleting welcome messages up to two days old."
+                "Welcome message hlui ni hnih aia rei te ka delete tawh ang."
             )
         else:
             update.effective_message.reply_text(
-                "I'm currently not deleting old welcome messages!"
+                "Welcome message hlui te ka delete rihlo!"
             )
         return ""
 
     if args[0].lower() in ("on", "yes"):
         sql.set_clean_welcome(str(chat.id), True)
-        update.effective_message.reply_text("I'll try to delete old welcome messages!")
+        update.effective_message.reply_text("Welcome message hlui te ka delete tawh ang!")
         return (
             f"<b>{html.escape(chat.title)}:</b>\n"
             f"#CLEAN_WELCOME\n"
             f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-            f"Has toggled clean welcomes to <code>ON</code>."
+            f"Hian clean welcomes hi a <code>ON</code>."
         )
     if args[0].lower() in ("off", "no"):
         sql.set_clean_welcome(str(chat.id), False)
-        update.effective_message.reply_text("I won't delete old welcome messages.")
+        update.effective_message.reply_text("Welcome message hlui ka delete lovang.")
         return (
             f"<b>{html.escape(chat.title)}:</b>\n"
             f"#CLEAN_WELCOME\n"
             f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-            f"Has toggled clean welcomes to <code>OFF</code>."
+            f"Hian clean welcomes hi a <code>OFF</code>."
         )
-    update.effective_message.reply_text("I understand 'on/yes' or 'off/no' only!")
+    update.effective_message.reply_text("He command chiah hi ka hrethiam 'on/yes' emaw 'off/no'!")
     return ""
 
 
@@ -988,21 +988,21 @@ def cleanservice(update: Update, context: CallbackContext) -> str:
         curr = sql.clean_service(chat.id)
         if curr:
             update.effective_message.reply_text(
-                "Welcome clean service is : on", parse_mode=ParseMode.MARKDOWN
+                "Welcome clean service a in : on", parse_mode=ParseMode.MARKDOWN
             )
         else:
             update.effective_message.reply_text(
-                "Welcome clean service is : off", parse_mode=ParseMode.MARKDOWN
+                "Welcome clean service a in : off", parse_mode=ParseMode.MARKDOWN
             )
 
     elif len(args) >= 1:
         var = args[0]
         if var in ("no", "off"):
             sql.set_clean_service(chat.id, False)
-            update.effective_message.reply_text("Welcome clean service is : off")
+            update.effective_message.reply_text("Welcome clean service a in : off")
         elif var in ("yes", "on"):
             sql.set_clean_service(chat.id, True)
-            update.effective_message.reply_text("Welcome clean service is : on")
+            update.effective_message.reply_text("Welcome clean service a in : on")
         else:
             update.effective_message.reply_text(
                 "Invalid option", parse_mode=ParseMode.MARKDOWN
@@ -1026,7 +1026,7 @@ def user_button(update: Update, context: CallbackContext):
         sql.set_human_checks(user.id, chat.id)
         member_dict = VERIFIED_USER_WAITLIST[(chat.id, user.id)]
         member_dict["status"] = True
-        query.answer(text="Yeet! You're a human, unmuted!")
+        query.answer(text="Awle! Mihring ngei i ni e, unmute i ni!")
         bot.restrict_chat_member(
             chat.id,
             user.id,
@@ -1073,7 +1073,7 @@ def user_button(update: Update, context: CallbackContext):
                     sql.set_clean_welcome(chat.id, sent.message_id)
 
     else:
-        query.answer(text="You're not allowed to do this!")
+        query.answer(text="He thil ti ve tur hian thuneihna pek i ni velo!")
 
 
 def user_captcha_button(update: Update, context: CallbackContext):
@@ -1096,7 +1096,7 @@ def user_captcha_button(update: Update, context: CallbackContext):
             sql.set_human_checks(user.id, chat.id)
             member_dict = VERIFIED_USER_WAITLIST[(chat.id, user.id)]
             member_dict["status"] = True
-            query.answer(text="Yeet! You're a human, unmuted!")
+            query.answer(text="Awle! Mihring ngei i ni e, unmute i ni!")
             bot.restrict_chat_member(
                 chat.id,
                 user.id,
@@ -1175,20 +1175,19 @@ WELC_HELP_TXT = (
     "vek a, a tihdan chu /markdownhelp tih hi lo thawn la i chhiar thei ang.\n"
     "Buttons i hman chuan, welcome message a ti langnalh duh bawk.\n\n"
     f"Button hmang a rules i set duh chuan tiang hian i set dawn nia: `[Rules](buttonurl://t.me/{dispatcher.bot.username}?start=group_id)`. \n"
-    "Khita `group_id` with your group's id, which can be obtained via /id, and you're good to "
-    "go. Note that group ids are usually preceded by a `-` sign; this is required, so please don't "
-    "remove it.\n"
-    "You can even set images/gifs/videos/voice messages as the welcome message by "
-    "replying to the desired media, and calling `/setwelcome`."
+    "Khita `group_id` tih khi i group id in i thlak dawn nia. \n"
+    "I Group id i hriat loh chuan Group ah khan /id tih hi thawn la alo lang mai ang. \n"
+    "I duh chuan images/gifs/videos/voice messages hmang pawhin welcome message i set thei a, \n"
+    "Khing media zing a i duh ber khi `/setwelcome` tih in i reply dawn nia."
 )
 WELC_MUTE_HELP_TXT = (
-    "You can get the bot to mute new people who join your group and hence prevent spambots from flooding your group. "
-    "The following options are possible:\n"
-    "  • `/welcomemute soft`*:* restricts new members from sending media for 24 hours.\n"
-    "  • `/welcomemute strong`*:* mutes new members till they tap on a button thereby verifying they're human.\n"
-    "  • `/welcomemute captcha`*:*  mutes new members till they solve a button captcha thereby verifying they're human.\n"
-    "  • `/welcomemute off`*:* turns off welcomemute.\n"
-    "*Note:* Strong mode kicks a user from the chat if they dont verify in 120seconds. They can always rejoin though"
+    "I duh chuan Member thar te welcome nan a hnuai ami hmang hian ilo welcome thei bawk ang. "
+    "Lo Welcome dan te chu:\n"
+    "  • `/welcomemute soft`*:* Darkar 24 chhung in member thar in eng media mah Group ah a thawn ve theilo ang.\n"
+    "  • `/welcomemute strong`*:* Mihring an ni ngei tih an fiah hma loh chuan member thar chu mute an ni ang.\n"
+    "  • `/welcomemute captcha`*:*  Captcha an solve hma loh chuan member thar te chu mute an ni ang.\n"
+    "  • `/welcomemute off`*:* Welcomemute off na.\n"
+    "*Note:* Strong mode khi chuan sec 120 chhung mihring an ni tih an fiah loh chuan kick an ni anga, mahse anlo join tha leh thei tho ang."
 )
 
 
