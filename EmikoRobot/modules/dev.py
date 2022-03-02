@@ -26,7 +26,7 @@ def allow_groups(update: Update, context: CallbackContext):
     elif args[0].lower() in ["yes", "on"]:
         EmikoRobot.ALLOW_CHATS = False
     else:
-        update.effective_message.reply_text("Format: /lockdown Yes/No or Off/On")
+        update.effective_message.reply_text("Format: /lockdown Yes/No emaaw Off/On")
         return
     update.effective_message.reply_text("Done! Lockdown value toggled.")
 
@@ -41,13 +41,13 @@ def leave(update: Update, context: CallbackContext):
             bot.leave_chat(int(chat_id))
         except TelegramError:
             update.effective_message.reply_text(
-                "Beep boop, I could not leave that group(dunno why tho).",
+                "Group ka leave theilo.",
             )
             return
         with suppress(Unauthorized):
-            update.effective_message.reply_text("Beep boop, I left that soup!.")
+            update.effective_message.reply_text("group ka left!.")
     else:
-        update.effective_message.reply_text("Send a valid chat ID")
+        update.effective_message.reply_text("Chat ID diktak lo thawn rawh")
 
 
 @dev_plus
