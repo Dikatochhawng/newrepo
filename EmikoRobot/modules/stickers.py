@@ -25,7 +25,7 @@ def stickerid(update: Update, context: CallbackContext):
         update.effective_message.reply_text(
             "Hello "
             + f"{mention_html(msg.from_user.id, msg.from_user.first_name)}"
-            + ", The sticker id you are replying is :\n <code>"
+            + ", Sticker reply id chu :\n <code>"
             + escape(msg.reply_to_message.sticker.file_id)
             + "</code>",
             parse_mode=ParseMode.HTML,
@@ -34,7 +34,7 @@ def stickerid(update: Update, context: CallbackContext):
         update.effective_message.reply_text(
             "Hello "
             + f"{mention_html(msg.from_user.id, msg.from_user.first_name)}"
-            + ", Please reply to sticker message to get id sticker",
+            + ", Sticker reply rawh",
             parse_mode=ParseMode.HTML,
         )
 
@@ -135,7 +135,7 @@ def kang(update, context):
                     ]
                 )
                 msg.reply_text(
-                    f"<b>Your sticker has been added!</b>"
+                    f"<b>I sticker add ani e!</b>"
                     f"\nEmoji Is : {sticker_emoji}",
                     reply_markup=edited_keyboard,
                     parse_mode=ParseMode.HTML,
@@ -177,7 +177,7 @@ def kang(update, context):
                         ]
                     )
                     msg.reply_text(
-                        f"<b>Your sticker has been added!</b>"
+                        f"<b>I sticker add ani e!</b>"
                         f"\nEmoji Is : {sticker_emoji}",
                         reply_markup=edited_keyboard,
                         parse_mode=ParseMode.HTML,
@@ -197,7 +197,7 @@ def kang(update, context):
                         ]
                     )
                     msg.reply_text(
-                        f"<b>Your sticker has been added!</b>"
+                        f"<b>I sticker add ani e!</b>"
                         f"\nEmoji Is : {sticker_emoji}",
                         reply_markup=edited_keyboard,
                         parse_mode=ParseMode.HTML,
@@ -243,7 +243,7 @@ def kang(update, context):
                     ]
                 )
                 msg.reply_text(
-                    f"<b>Your sticker has been added!</b>"
+                    f"<b>I sticker add ani e!</b>"
                     f"\nEmoji Is : {sticker_emoji}",
                     reply_markup=edited_keyboard,
                     parse_mode=ParseMode.HTML,
@@ -261,7 +261,7 @@ def kang(update, context):
                         tgs_sticker=open("kangsticker.tgs", "rb"),
                     )
                     
-                elif e.message == "Invalid sticker emojis":
+                elif e.message == "Sticker emoji a diklo":
                     msg.reply_text("Invalid emoji(s).")
                 elif e.message == "Internal Server Error: sticker set not found (500)":
                     edited_keyboard = InlineKeyboardMarkup(
@@ -274,7 +274,7 @@ def kang(update, context):
                         ]
                     )
                     msg.reply_text(
-                        f"<b>Your sticker has been added!</b>"
+                        f"<b>I sticker add ani e!</b>"
                         f"\nEmoji Is : {sticker_emoji}",
                         reply_markup=edited_keyboard,
                         parse_mode=ParseMode.HTML,
@@ -327,7 +327,7 @@ def kang(update, context):
                 ]
             )
             msg.reply_text(
-                f"<b>Your sticker has been added!</b>" f"\nEmoji Is : {sticker_emoji}",
+                f"<b>I sticker add ani e!</b>" f"\nEmoji chu : {sticker_emoji}",
                 reply_markup=edited_keyboard,
                 parse_mode=ParseMode.HTML,
             )
@@ -366,8 +366,8 @@ def kang(update, context):
                     ]
                 )
                 msg.reply_text(
-                    f"<b>Your sticker has been added!</b>"
-                    f"\nEmoji Is : {sticker_emoji}",
+                    f"<b>I sticker add ani e!</b>"
+                    f"\nEmoji chu : {sticker_emoji}",
                     reply_markup=edited_keyboard,
                     parse_mode=ParseMode.HTML,
                 )
@@ -377,14 +377,14 @@ def kang(update, context):
                 msg.reply_text("Max packsize reached. Press F to pay respecc.")
             elif e.message == "Internal Server Error: sticker set not found (500)":
                 msg.reply_text(
-                    f"<b>Your sticker has been added!</b>"
-                    f"\nEmoji Is : {sticker_emoji}",
+                    f"<b>I sticker add ani e!</b>"
+                    f"\nEmoji chu : {sticker_emoji}",
                     reply_markup=edited_keyboard,
                     parse_mode=ParseMode.HTML,
                 )
             print(e)
     else:
-        packs_text = "*Please reply to a sticker, or image to kang it!*\n"
+        packs_text = "*Sticker reply rawh!*\n"
         if packnum > 0:
             firstpackname = "a" + str(user.id) + "_by_" + context.bot.username
             for i in range(0, packnum + 1):
@@ -454,15 +454,15 @@ def makepack_internal(
         print(e)
         if e.message == "Sticker set name is already occupied":
             msg.reply_text(
-                "<b>Your Sticker Pack is already created!</b>"
-                "\n\nYou can now reply to images, stickers and animated sticker with /steal to add them to your pack"
-                "\n\n<b>Send /stickers to find any sticker pack.</b>",
+                "<b>I Sticker Pack chu siam ani e!</b>"
+                "\n\nThlalak, stickers leh animated sticker te hi /steal tih in reply rawh i pack a i add duh chuan"
+            "\n\n<b>/sticker tih hi i pack i en duh chuan lo thawn rawh.</b>",
                 reply_markup=keyboard,
                 parse_mode=ParseMode.HTML,
             )
         elif e.message == "Peer_id_invalid" or "bot was blocked by the user":
             msg.reply_text(
-                f"{context.bot.first_name} was blocked by you.",
+                f"{context.bot.first_name} i blocked daih.",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -475,9 +475,9 @@ def makepack_internal(
             )
         elif e.message == "Internal Server Error: created sticker set not found (500)":
             msg.reply_text(
-                "<b>Your Sticker Pack has been created!</b>"
-                "\n\nYou can now reply to images, stickers and animated sticker with /steal to add them to your pack"
-                "\n\n<b>Send /stickers to find sticker pack.</b>",
+                "<b>I Sticker Pack chu siam ani e!</b>"
+                "\n\nThlalak, stickers leh animated sticker te hi /steal tih in reply rawh i pack a i add duh chuan"
+                "\n\n<b>/sticker tih hi i pack i en duh chuan lo thawn rawh.</b>",
                 reply_markup=keyboard,
                 parse_mode=ParseMode.HTML,
             )
@@ -485,9 +485,9 @@ def makepack_internal(
 
     if success:
         msg.reply_text(
-            "<b>Your Sticker Pack has been created!</b>"
-            "\n\nYou can now reply to images, stickers and animated sticker with /steal to add them to your pack"
-            "\n\n<b>Send /stickers to find sticker pack.</b>",
+            "<b>I Sticker Pack chu siam ani e!</b>"
+            "\n\nThlalak, stickers leh animated sticker te hi /steal tih in reply rawh i pack a i add duh chuan"
+            "\n\n<b>/sticker tih hi i pack i en duh chuan lo thawn rawh.</b>",
             reply_markup=keyboard,
             parse_mode=ParseMode.HTML,
         )
@@ -520,7 +520,7 @@ def getsticker(update, context):
         update.effective_message.reply_text(
             "Hello"
             + f"{mention_html(msg.from_user.id, msg.from_user.first_name)}"
-            + ", Please reply to sticker message to get sticker image",
+            + ", Message reply rawh",
             parse_mode=ParseMode.HTML,
         )
 
@@ -529,7 +529,7 @@ def cb_sticker(update: Update, context: CallbackContext):
     msg = update.effective_message
     split = msg.text.split(" ", 1)
     if len(split) == 1:
-        msg.reply_text("Provide some name to search for pack.")
+        msg.reply_text("hming type tel tur.")
         return
 
     scraper = cloudscraper.create_scraper()
@@ -559,7 +559,7 @@ def getsticker(update: Update, context: CallbackContext):
         os.remove("sticker.png")
     else:
         update.effective_message.reply_text(
-            "Please reply to a sticker for me to upload its PNG."
+            "Sticker reply rawh PNG a siam tur chuan."
         )
 
 
@@ -571,7 +571,7 @@ def delsticker(update, context):
         msg.reply_text("Deleted!")
     else:
         update.effective_message.reply_text(
-            "Please reply to sticker message to del sticker"
+            "Sticker delete tur chuan reply rawh"
         )
 
 __mod_name__ = "Stickers"
@@ -579,14 +579,14 @@ __mod_name__ = "Stickers"
 __help__ = """
 *Help menu for stickers tools*
 
-❂ /stickerid*:* reply to a sticker to me to tell you its file ID.
-❂ /getsticker*:* reply to a sticker to me to upload its raw PNG file.
-❂ /kang*:* reply to a sticker to add it to your pack.
-❂ /delsticker*:* Reply to your anime exist sticker to your pack to delete it.
-❂ /stickers*:* Find stickers for given term on combot sticker catalogue
-❂ /tiny*:* To make small sticker
-❂ /kamuii <1-8> *:* To deepefying stiker
-❂ /mmf <reply with text>*:* To draw a text for sticker or pohots
+❂ /stickerid (sticker reply tur) *:*Sticker ID en na..
+❂ /getsticker (sticker reply tur) *:* Sticker kha png file a thlak na
+❂ /kang (sticker hming) *:* Sticker lak na.
+❂ /delsticker (sticker hming) *:* Sticker delete na.
+❂ /stickers (sticker hming) *:* Sticker zawn na.
+❂ /tiny*:* Sticker te siam na
+❂ /kamuii <1-8> *:* Stcker siamna
+❂ /mmf <reply with text>*:* Thuziak sticker emaw thlalak emaw siamna.
 """
 
 
