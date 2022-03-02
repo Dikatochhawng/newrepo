@@ -34,22 +34,22 @@ def bl_user(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Felhlel deuh ava awm ve.")
         return ""
 
     if user_id == bot.id:
-        message.reply_text("How am I supposed to do my work if I am ignoring myself?")
+        message.reply_text("Eng thil nge ka tih tak ang?")
         return ""
 
     if user_id in BLACKLISTWHITELIST:
-        message.reply_text("No!\nNoticing Disasters is my job.")
+        message.reply_text("Nilo e!\nKa hna alawm heng te chu.")
         return ""
 
     try:
         target_user = bot.get_chat(user_id)
     except BadRequest as excp:
-        if excp.message == "User not found":
-            message.reply_text("I can't seem to find this user.")
+        if excp.message == "User hi hmuh anilo":
+            message.reply_text("Hemi hi ka hmu zo tlat lo.")
             return ""
         raise
 
@@ -75,18 +75,18 @@ def unbl_user(update: Update, context: CallbackContext) -> str:
     user_id = extract_user(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Felhlel deuh a va awm ve.")
         return ""
 
     if user_id == bot.id:
-        message.reply_text("I always notice myself.")
+        message.reply_text("Ka in hrechiang alawm.")
         return ""
 
     try:
         target_user = bot.get_chat(user_id)
     except BadRequest as excp:
-        if excp.message == "User not found":
-            message.reply_text("I can't seem to find this user.")
+        if excp.message == "User hi ka hmu zo tlat lo":
+            message.reply_text("User hi ka hmu zo tlat lo.")
             return ""
         raise
 
@@ -101,7 +101,7 @@ def unbl_user(update: Update, context: CallbackContext) -> str:
         )
 
         return log_message
-    message.reply_text("I am not ignoring them at all though!")
+    message.reply_text("Ka haider dawn lo hrim hrim!")
     return ""
 
 
@@ -122,7 +122,7 @@ def bl_users(update: Update, context: CallbackContext):
 
     message = "<b>Blacklisted Users</b>\n"
     if not users:
-        message += "Noone is being ignored as of yet."
+        message += "Ignore an awm lem lo."
     else:
         message += "\n".join(users)
 
