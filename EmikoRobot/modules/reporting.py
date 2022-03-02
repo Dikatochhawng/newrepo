@@ -103,7 +103,7 @@ def report(update: Update, context: CallbackContext) -> str:
                 f"<b> • Report by:</b> {mention_html(user.id, user.first_name)}(<code>{user.id}</code>)\n"
                 f"<b> • Reported user:</b> {mention_html(reported_user.id, reported_user.first_name)} (<code>{reported_user.id}</code>)\n"
             )
-            link = f'<b> • Reported message:</b> <a href="https://t.me/{chat.username}/{message.reply_to_message.message_id}">click here</a>'
+            link = f'<b> • Reported message:</b> <a href="https://t.me/{chat.username}/{message.reply_to_message.message_id}">HMET RAWH</a>'
             should_forward = False
             keyboard = [
                 [
@@ -197,7 +197,7 @@ def report(update: Update, context: CallbackContext) -> str:
                     LOGGER.exception("Exception while reporting user")
 
         message.reply_to_message.reply_text(
-            f"{mention_html(user.id, user.first_name)} reported the message to the admins.",
+            f"{mention_html(user.id, user.first_name)} message hi admin hnen ah report ani.",
             parse_mode=ParseMode.HTML,
         )
         return msg
@@ -229,10 +229,10 @@ def buttons(update: Update, context: CallbackContext):
         try:
             bot.kickChatMember(splitter[0], splitter[2])
             bot.unbanChatMember(splitter[0], splitter[2])
-            query.aswer("✅ Succesfully kicked")
+            query.aswer("✅ kick ani e")
             return ""
         except Exception as err:
-            query.answer("🛑 Failed to Kick")
+            query.answer("🛑 Kick tum a fail")
             bot.sendMessage(
                 text=f"Error: {err}",
                 chat_id=query.message.chat_id,
@@ -241,7 +241,7 @@ def buttons(update: Update, context: CallbackContext):
     elif splitter[1] == "banned":
         try:
             bot.kickChatMember(splitter[0], splitter[2])
-            query.answer("✅  Succesfully Banned")
+            query.answer("✅  Ban ani")
             return ""
         except Exception as err:
             bot.sendMessage(
@@ -249,11 +249,11 @@ def buttons(update: Update, context: CallbackContext):
                 chat_id=query.message.chat_id,
                 parse_mode=ParseMode.HTML,
             )
-            query.answer("🛑 Failed to Ban")
+            query.answer("🛑 Ban tum a fail")
     elif splitter[1] == "delete":
         try:
             bot.deleteMessage(splitter[0], splitter[3])
-            query.answer("✅ Message Deleted")
+            query.answer("✅ Message Delete ani")
             return ""
         except Exception as err:
             bot.sendMessage(
@@ -261,18 +261,18 @@ def buttons(update: Update, context: CallbackContext):
                 chat_id=query.message.chat_id,
                 parse_mode=ParseMode.HTML,
             )
-            query.answer("🛑 Failed to delete message!")
+            query.answer("🛑 Message Delete a fail tlat mai!")
 
 
 __help__ = """
-❂ /report <reason>*:* reply to a message to report it to admins.
-❂ @admin*:* reply to a message to report it to admins.
-*NOTE:* Neither of these will get triggered if used by admins.
+❂ /report <Achhan>*:* I report duh message kha reply la, group Admin te hnen ah i report thei ang. (Admin ten report theihna an on angai).
+❂ @admin*:* Admin hnen a i report duh message kha reply rawh.
+*NOTE:* Admin ten hmu ngei se i tih kha i reportthin dawn nia.
 
 *Admins only:*
-❂ /reports <on/off>*:* change report setting, or view current status.
-❂ If done in pm, toggles your status.
-❂ If in group, toggles that groups's status.
+❂ /reports <on/off>*:* report on na leh off na.
+❂ Private ah a tih theih a.
+❂ Group ah pawh a theih bawk.
 """
 
 SETTING_HANDLER = CommandHandler("reports", report_setting, run_async=True)
