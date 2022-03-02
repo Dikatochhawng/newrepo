@@ -15,7 +15,7 @@ spam_chats = []
 async def mentionall(event):
     chat_id = event.chat_id
     if event.is_private:
-        return await event.respond("__This command can be use in groups and channels!__")
+        return await event.respond("__He command hi Group leh channel ah a hman theih!__")
 
     is_admin = False
     try:
@@ -37,7 +37,7 @@ async def mentionall(event):
         ):
             is_admin = True
     if not is_admin:
-        return await event.reply("__Only admins can mention all!__")
+        return await event.reply("__Admin chiah in a vaiin a mention thei!__")
 
     if event.pattern_match.group(1) and event.is_reply:
         return await event.reply("__Give me one argument!__")
@@ -49,9 +49,9 @@ async def mentionall(event):
         msg = await event.get_reply_message()
         if msg == None:
             return await event.respond(
-                "__I can't mention members for older messages! (messages which are sent before I'm added to group)__")
+                "__Message hluika mention theilo! (Group ka awm hma ami message ho chu)__")
     else:
-        return await event.reply("__Reply to a message or give me some text to mention others!__")
+        return await event.reply("__Midang mention tur chuan message emaw text emaw reply angai!__")
 
     spam_chats.append(chat_id)
     usrnum = 0
@@ -98,9 +98,9 @@ async def cancel_spam(event):
         ):
             is_admin = True
     if not is_admin:
-        return await event.reply("__Only admins can execute this command!__")
+        return await event.reply("__Admin te chiah in he command hi an execute thei!__")
     if not event.chat_id in spam_chats:
-        return await event.reply("__There is no proccess on going...__")
+        return await event.reply("__Tihlai mek engmah a awmlo...__")
     else:
         try:
             spam_chats.remove(event.chat_id)
@@ -113,10 +113,10 @@ __mod_name__ = "Tag all"
 __help__ = """
 ──「 Mention all func 」──
 
-Emiko Can Be a Mention Bot for your group.
+Lynn hi iGroup ami te mention vek turin a tling tawk.
 
-Only admins can tag all.  here is a list of commands
+Tagall hi admin chiahin an hmang thei.  A command dan chu
 
-❂ /tagall or @all (reply to message or add another message) To mention all members in your group, without exception.
-❂ /cancel for canceling the mention-all.
+❂ /tagall emaw @all (message reply emaw thu thar pawh a hman theih) kimlo awm miahlo in Group amite a rualin a mention vek thei.
+❂ /cancel hi chu the mention-all i tih cancel na ani.
 """
