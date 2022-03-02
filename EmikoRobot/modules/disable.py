@@ -144,10 +144,10 @@ if is_module_loaded(FILENAME):
                     parse_mode=ParseMode.MARKDOWN,
                 )
             else:
-                update.effective_message.reply_text("That command can't be disabled")
+                update.effective_message.reply_text("He command hi a disable theih loh")
 
         else:
-            update.effective_message.reply_text("What should I disable?")
+            update.effective_message.reply_text("Enge ka disable ang?")
 
     @connection_status
     @user_admin
@@ -160,14 +160,14 @@ if is_module_loaded(FILENAME):
             try:
                 module = importlib.import_module(disable_module)
             except:
-                update.effective_message.reply_text("Does that module even exist?")
+                update.effective_message.reply_text("He module hi a awm ami?")
                 return
 
             try:
                 command_list = module.__command_list__
             except:
                 update.effective_message.reply_text(
-                    "Module does not contain command list!",
+                    "Module ah hian command list a awmlo!",
                 )
                 return
 
@@ -199,7 +199,7 @@ if is_module_loaded(FILENAME):
                 )
 
         else:
-            update.effective_message.reply_text("What should I disable?")
+            update.effective_message.reply_text("Enge ka disable ang?")
 
     @connection_status
     @user_admin
@@ -241,7 +241,7 @@ if is_module_loaded(FILENAME):
                 command_list = module.__command_list__
             except:
                 update.effective_message.reply_text(
-                    "Module does not contain command list!",
+                    "Module ah hian command list a awmlo!",
                 )
                 return
 
@@ -322,11 +322,11 @@ if is_module_loaded(FILENAME):
 
 *Admins only:*
 
-❂ /enable <cmd name>*:* enable that command
-❂ /disable <cmd name>*:* disable that command
-❂ /enablemodule <module name>*:* enable all commands in that module
-❂ /disablemodule <module name>*:* disable all commands in that module
-❂ /listcmds*:* list all possible toggleable commands
+❂ /enable <cmd name>*:* Command enable na
+❂ /disable <cmd name>*:* Command disable na
+❂ /enablemodule <module name>*:* Module a command zawng zawng enable na
+❂ /disablemodule <module name>*:* Module a command zawng zawng disable na
+❂ /listcmds*:* Command list ho en na
 """
 
     DISABLE_HANDLER = CommandHandler("disable", disable, run_async=True)
