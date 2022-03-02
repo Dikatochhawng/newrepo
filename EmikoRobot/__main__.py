@@ -83,7 +83,7 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 *Chibai {} !*
- Kei hi i Group enkawl tur a duhtaka [Didiktea](https://t.me/Didiktea) siam ka ni.
+ Kei hi i Group enkawl tur a duhtaka Didiktea siam ka ni.
 ────────────────────────
 × *Uptime:* `{}`
 × `{}` *users, across* `{}` *chats.*
@@ -197,7 +197,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="help_back")]]
                     ),
                 )
 
@@ -384,7 +384,7 @@ def emiko_about_callback(update, context):
                     InlineKeyboardButton(text="Source Code", url="https://github.com/Didiktea9/lynn"),
                  ],
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="emiko_back"),
+                    InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="emiko_back"),
                  ]
                 ]
             ),
@@ -444,7 +444,7 @@ def emiko_about_callback(update, context):
                     InlineKeyboardButton(text="Channel", url="https://t.me/androidusersmizo"),
                  ],
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
+                    InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="emiko_"),
                  
                  ]
                 ]
@@ -464,7 +464,7 @@ def emiko_about_callback(update, context):
                     InlineKeyboardButton(text="RSR-TG-INFO", url="https://t.me/rsrmusic"),
                  ],
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
+                    InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="emiko_"),
                  ]
                 ]
             ),
@@ -490,7 +490,7 @@ def Source_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="emiko_")
+                    InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="emiko_")
                  ]
                 ]
             ),
@@ -560,7 +560,7 @@ def get_help(update: Update, context: CallbackContext):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="help_back")]]
             ),
         )
 
@@ -632,7 +632,7 @@ def settings_button(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Go Back",
+                                text="「🔙 GO BACK 」",
                                 callback_data="stngs_back({})".format(chat_id),
                             )
                         ]
