@@ -1,19 +1,10 @@
 __mod_name__ = "Music"
 
 __help__ = """
-──「 Music stream 」──              
+──「 Music Download 」──              
 
-❂ /play (query or reply audio) to playing music from yourube or your audio telegram.
-❂ /playlist (choose option) for playing your personal playlist or group playlist.
+❂ /song (hla hming) : Command zawh a hla hming i dah in youtube ami hla i download thei ang(hla hming aiah youtube link pawh a hman theih).
+❂ /video (hla hming) : Command zawh a hla hming i dah in youtube ami video i download thei ang(hla hming aiah youtube link pawh a hman theih).
+❂ /lyrics (hla hming) : Command zawh a hla hming i dah in a lyrics ka pe ang che.
 
-• Admins only
-
-❂ /auth - Add to authorized users.
-❂ /unauth - Canceling or deleting from authorized users list.
-❂ /msettings - To open panel settings on musicplayer.
-❂ /setadmin - To set all command only for admins.
-❂ /setmember - Set all command for all members.
-❂ /vol (range 1-200) - To set volume on voice calls.
-
-NOTE : DON'T SPAMMING AT REQUEST SONG OR VIDEO...
 """
