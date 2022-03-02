@@ -63,37 +63,37 @@ def ban(update: Update, context: CallbackContext) -> str:
     if message.reply_to_message and message.reply_to_message.sender_chat:
         r = bot.ban_chat_sender_chat(chat_id=chat.id, sender_chat_id=message.reply_to_message.sender_chat.id)
         if r:
-            message.reply_text("Channel {} was banned successfully from {}".format(
+            message.reply_text("Channel {} hi {} atang in ban ani e".format(
                 html.escape(message.reply_to_message.sender_chat.title),
                 html.escape(chat.title)
             ),
                 parse_mode="html"
             )
         else:
-            message.reply_text("Failed to ban channel")
+            message.reply_text("Channel ban tum hi a fail tlat mai")
         return
 
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("⚠️ User not found.")
+        message.reply_text("⚠️ User hi ka hmu zo tlat lo.")
         return log_message
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message != "User not found":
+        if excp.message != "User hi ka hmu tlat lo":
             raise
-        message.reply_text("Can't seem to find this person.")
+        message.reply_text("i mi duh hi ka hmu zo tlat lo.")
         return log_message
     if user_id == bot.id:
-        message.reply_text("Oh yeah, ban myself, noob!")
+        message.reply_text("Haha, tunge mahni in ban ngai, noob!")
         return log_message
 
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
         if user_id == OWNER_ID:
-            message.reply_text("Trying to put me against a King huh?")
+            message.reply_text("ka boss nen min in hmuhthiam loh tir i tum ami?")
         elif user_id in DEV_USERS:
-            message.reply_text("I can't act against our Prince.")
+            message.reply_text("he thil hi chu min tihtir tumlo mai rawh.")
         elif user_id in DRAGONS:
             message.reply_text(
                 "Fighting this Emperor here will put user lives at risk."
@@ -109,7 +109,8 @@ def ban(update: Update, context: CallbackContext) -> str:
         elif user_id in WOLVES:
             message.reply_text("Trader access make them ban immune!")
         else:
-            message.reply_text("⚠️ Cannot banned admin.")
+            message.reply_text("⚠️ Admin a ban theihloh
+.")
         return log_message
     if message.text.startswith("/s"):
         silent = True
@@ -266,10 +267,10 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         return log
 
     except BadRequest as excp:
-        if excp.message == "Reply message not found":
+        if excp.message == "i message reply hi a awm tawhlo":
             # Do not reply
             message.reply_text(
-                f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] banned for {time_val}.", quote=False
+                f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] ban chhung chu {time_val}ani.", quote=False
             )
             return log
         else:
@@ -305,7 +306,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             if not is_user_admin(chat, int(user.id)):
                 bot.answer_callback_query(
                     query.id,
-                    text="⚠️ You don't have enough rights to unmute people",
+                    text="⚠️ mi unmute turin thuneihna i nei velo",
                     show_alert=True,
                 )
                 return ""
@@ -330,7 +331,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
         if not is_user_admin(chat, int(user.id)):
             bot.answer_callback_query(
                 query.id,
-                text="⚠️ You don't have enough rights to delete this message.",
+                text="⚠️ he message delete tur hian thuneihna i nei velo.",
                 show_alert=True,
             )
             return ""
@@ -354,23 +355,23 @@ def punch(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("⚠️ User not found")
+        message.reply_text("⚠️ User hi hmuh anilo")
         return log_message
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message != "User not found":
+        if excp.message != "User hi hmuh anilo":
             raise
 
-        message.reply_text("⚠️ I can't seem to find this user.")
+        message.reply_text("⚠️ User hi hmuh anilo.")
         return log_message
     if user_id == bot.id:
-        message.reply_text("Yeahhh I'm not gonna do that.")
+        message.reply_text("Ka tihtheih loh lampui tak ani.")
         return log_message
 
     if is_user_ban_protected(chat, user_id):
-        message.reply_text("I really wish I could punch this user....")
+        message.reply_text("He mi hi ben lawlh ka chak zia hi chu aw....")
         return log_message
 
     res = chat.unban_member(user_id)  # unban on current user = kick
@@ -393,7 +394,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         return log
 
     else:
-        message.reply_text("⚠️ Well damn, I can't punch that user.")
+        message.reply_text("⚠️ Awle, he user hi ka hrem theilo.")
 
     return log_message
 
@@ -404,16 +405,16 @@ def punch(update: Update, context: CallbackContext) -> str:
 def punchme(update: Update, context: CallbackContext):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update.effective_chat, user_id):
-        update.effective_message.reply_text("I wish I could... but you're an admin.")
+        update.effective_message.reply_text("Theih se ka ti... mahse admin i ni sia.")
         return
 
     res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
     if res:
         update.effective_message.reply_text(
-            "punches you out of the group!!",
+            "Group atanga punch i ni!!",
         )
     else:
-        update.effective_message.reply_text("Huh? I can't :/")
+        update.effective_message.reply_text("Enga? Ka theilo :/")
 
 
 @connection_status
@@ -443,22 +444,22 @@ def unban(update: Update, context: CallbackContext) -> Optional[str]:
 
     user_id, reason = extract_user_and_text(message, args)
     if not user_id:
-        message.reply_text("⚠️ User not found.")
+        message.reply_text("⚠️ User hi hmuh ani lo.")
         return log_message
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message != "User not found":
+        if excp.message != "User hi hmuh ani lo":
             raise
-        message.reply_text("I can't seem to find this user.")
+        message.reply_text("User hi hmuh ani lo.")
         return log_message
     if user_id == bot.id:
-        message.reply_text("How would I unban myself if I wasn't here...?")
+        message.reply_text("Engtin nge keimah ka in unban theih ang...?")
         return log_message
 
     if is_user_in_chat(chat, user_id):
-        message.reply_text(f"⚠️ User not found.")
+        message.reply_text(f"⚠️ User hi hmuh ani lo.")
         return log_message
 
     chat.unban_member(user_id)
@@ -492,7 +493,7 @@ def selfunban(update: Update, context: CallbackContext) -> str:
     try:
         chat_id = int(args[0])
     except:
-        message.reply_text("Give a valid chat ID.")
+        message.reply_text("Chat ID diktak type rawh.")
         return
 
     chat = bot.getChat(chat_id)
@@ -501,7 +502,7 @@ def selfunban(update: Update, context: CallbackContext) -> str:
         member = chat.get_member(user.id)
     except BadRequest as excp:
         if excp.message == "User not found":
-            message.reply_text("I can't seem to find this user.")
+            message.reply_text("He user hi ka hmu zo lo.")
             return
         else:
             raise
@@ -511,7 +512,7 @@ def selfunban(update: Update, context: CallbackContext) -> str:
         return
 
     chat.unban_member(user.id)
-    message.reply_text(f"Yep, I have unbanned The user.")
+    message.reply_text(f"Aw, he user hi unban e.")
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
@@ -530,12 +531,12 @@ def banme(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
     if is_user_admin(update.effective_chat, user_id):
-        update.effective_message.reply_text("⚠️ I cannot banned admin.")
+        update.effective_message.reply_text("⚠️ Admin ka ban theilo.")
         return
 
     res = update.effective_chat.ban_member(user_id)
     if res:
-        update.effective_message.reply_text("Yes, you're right! GTFO..")
+        update.effective_message.reply_text("Kal mai teh..")
         return (
             "<b>{}:</b>"
             "\n#BANME"
@@ -578,17 +579,17 @@ __help__ = """
 
 *Admins only:*
 
-❂ /ban <userhandle>*:* bans a user. (via handle, or reply)
-❂ /sban <userhandle>*:* Silently ban a user. Deletes command, Replied message and doesn't reply. (via handle, or reply)
-❂ /tban <userhandle> x(m/h/d)*:* bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-❂ /unban <userhandle>*:* unbans a user. (via handle, or reply)
-❂ /kick <userhandle>*:* kicks a user out of the group, (via handle, or reply)
-❂ /mute <userhandle>*:* silences a user. Can also be used as a reply, muting the replied to user.
-❂ /tmute <userhandle> x(m/h/d)*:* mutes a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-❂ /unmute <userhandle>*:* unmutes a user. Can also be used as a reply, muting the replied to user.
-❂ /zombies*:* searches deleted accounts
-❂ /zombies clean*:* removes deleted accounts from the group.
-❂ /snipe <chatid> <string>*:* Make me send a message to a specific chat.
+❂ /ban *:* Mi ban na (an message reply emaw username emaw ID hman tur).
+❂ /sban *:* Midang hriat ve loh tur a mi ban na (ban dan pangai nen a tihdan a in ang)
+❂ /tban *:* Tiam chin nei a mi ban na (hei pawh message reply emaw username leh ID hman tur, chuan i ban duh hun kha dah leh mai tur).
+❂ /unban *:* Mi i ban tawh sa sut leh na (ban dan te nen khian a tihdan a in ang vek).
+❂ /kick *:* Group atang a mi pet chhuah na.
+❂ /mute *:* Mi mute na. An mahni reply in emaw, An message reply mai tur.
+❂ /tmute *:* Hun tiam chhung awm a mi mute na.
+❂ /unmute *:* Mi unmute na.
+❂ /zombies*:* Group a Delete Account awmzat en na.
+❂ /zombies clean*:* Group a Delete Account awm te remove na.
+❂ /snipe <chatid> <string>*:* Duhna tak Group a message thawnna.
 """
 
 
