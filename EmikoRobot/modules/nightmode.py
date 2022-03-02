@@ -98,14 +98,14 @@ async def profanity(event):
                 )
                 return
         await event.reply(
-            "Currently NightMode is Disabled for this Chat"
+            "Group ah hian NightMode tihnun ani lo"
         )
         return
     if "on" in input:
         if event.is_group:
             if is_nightmode_indb(str(event.chat_id)):
                     await event.reply(
-                        "Night Mode is Already Turned ON for this Chat"
+                        "Group ah hian Night Mode tihnun ani tawh"
                     )
                     return
             add_nightmode(str(event.chat_id))
@@ -114,7 +114,7 @@ async def profanity(event):
         if event.is_group:
             if not is_nightmode_indb(str(event.chat_id)):
                     await event.reply(
-                        "Night Mode is Already Off for this Chat"
+                        "Group ah hian Nightmode tih thih rih ani"
                     )
                     return
         rmnightmode(str(event.chat_id))
@@ -131,7 +131,7 @@ async def job_close():
     for pro in chats:
         try:
             await tbot.send_message(
-              int(pro.chat_id), "12:00 Am, Group Is Closing Till 6 Am. Night Mode Started ! \n**Powered By @emiexrobot**"
+              int(pro.chat_id), "12:00 Am atang a zing dar 6 Am thleng Group ah hian message a than theihloh. Night Mode a intan e ! \n**Powered By @Lynnchawngthu_bot**"
             )
             await tbot(
             functions.messages.EditChatDefaultBannedRightsRequest(
@@ -139,7 +139,7 @@ async def job_close():
             )
             )
         except Exception as e:
-            logger.info(f"Unable To Close Group {chat} - {e}")
+            logger.info(f"{chat} hi ka open thei rihlo - {e}")
 
 #Run everyday at 12am
 scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
@@ -153,7 +153,7 @@ async def job_open():
     for pro in chats:
         try:
             await tbot.send_message(
-              int(pro.chat_id), "06:00 Am, Group Is Opening.\n**Powered By @emiexrobot**"
+              int(pro.chat_id), "Zing dar 06:00 Am ani a, Group ah message a thawn leh theih tawh e.\n**Powered By @Lynnchawngthu_bot**"
             )
             await tbot(
             functions.messages.EditChatDefaultBannedRightsRequest(
@@ -161,7 +161,7 @@ async def job_open():
             )
         )
         except Exception as e:
-            logger.info(f"Unable To Open Group {pro.chat_id} - {e}")
+            logger.info(f"Group ka openthei rihlo {pro.chat_id} - {e}")
 
 # Run everyday at 06
 scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
