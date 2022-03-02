@@ -943,7 +943,7 @@ __help__ = """
 
 *Rules*:
 ❂ /rules*:*Group rules siam en na.
-❂ /setrules <your rules here>*:* Keimah kaltlang a rules siamna.
+❂ /setrules <I rules tur>*:* Keimah kaltlang a rules siamna.
 ❂ /clearrules*:* Keima kaltlang a rules siam paih na.
 """
 
