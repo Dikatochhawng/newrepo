@@ -55,7 +55,7 @@ def list_handlers(update, context):
     if not conn is False:
         chat_id = conn
         chat_name = dispatcher.bot.getChat(conn).title
-        filter_list = "*Filter in {}:*\n"
+        filter_list = "*{} filter save te chu:*\n"
     else:
         chat_id = update.effective_chat.id
         if chat.type == "private":
@@ -63,13 +63,13 @@ def list_handlers(update, context):
             filter_list = "*local filters:*\n"
         else:
             chat_name = chat.title
-            filter_list = "*Filters in {}*:\n"
+            filter_list = "*{} filter save te chu*:\n"
 
     all_handlers = sql.get_chat_triggers(chat_id)
 
     if not all_handlers:
         send_message(
-            update.effective_message, "No filters saved in {}!".format(chat_name)
+            update.effective_message, "{} ah hian filter save a awmlo!".format(chat_name)
         )
         return
 
@@ -117,7 +117,7 @@ def filters(update, context):
     if not msg.reply_to_message and len(args) < 2:
         send_message(
             update.effective_message,
-            "Please provide keyboard keyword for this filter to reply with!",
+            "He filter reply tur hian thuziak dahtel rawh!",
         )
         return
 
@@ -125,7 +125,7 @@ def filters(update, context):
         if len(args) < 2:
             send_message(
                 update.effective_message,
-                "Please provide keyword for this filter to reply with!",
+                "He filter reply tur hian thuziak dahtel rawh!",
             )
             return
         else:
@@ -177,7 +177,7 @@ def filters(update, context):
     elif not text and not file_type:
         send_message(
             update.effective_message,
-            "Please provide keyword for this filter reply with!",
+            "He filter reply tur hian thuziak dahtel rawh!",
         )
         return
 
@@ -213,7 +213,7 @@ def filters(update, context):
     if add is True:
         send_message(
             update.effective_message,
-            "Saved filter '{}' in *{}*!".format(keyword, chat_name),
+            "'{}' tih hi *{}* filter ah save ani e!".format(keyword, chat_name),
             parse_mode=telegram.ParseMode.MARKDOWN,
         )
     raise DispatcherHandlerStop
@@ -253,14 +253,14 @@ def stop_filter(update, context):
             sql.remove_filter(chat_id, args[1])
             send_message(
                 update.effective_message,
-                "Okay, I'll stop replying to that filter in *{}*.".format(chat_name),
+                "Awle, *{}* a filter te hi ka reply tawh lovang.".format(chat_name),
                 parse_mode=telegram.ParseMode.MARKDOWN,
             )
             raise DispatcherHandlerStop
 
     send_message(
         update.effective_message,
-        "That's not a filter - Click: /filters to get currently active filters.",
+        "Filter te en tur chuan - Hetiang hian: /filters tih hi group ah thawn rawh.",
     )
 
 
@@ -472,16 +472,16 @@ def reply_filter(update, context):
                             try:
                                 send_message(
                                     update.effective_message,
-                                    "This message couldn't be sent as it's incorrectly formatted.",
+                                    "A format a dik lo.",
                                 )
                             except BadRequest as excp:
                                 LOGGER.exception("Error in filters: " + excp.message)
                                 pass
                             LOGGER.warning(
-                                "Message %s could not be parsed", str(filt.reply)
+                                "Message %s hi a parse theilo", str(filt.reply)
                             )
                             LOGGER.exception(
-                                "Could not parse filter %s in chat %s",
+                                "Filter %s hi a parse theilo %s",
                                 str(filt.keyword),
                                 str(chat.id),
                             )
@@ -531,7 +531,7 @@ def rmall_callback(update, context):
         if member.status == "creator" or query.from_user.id in DRAGONS:
             allfilters = sql.get_chat_triggers(chat.id)
             if not allfilters:
-                msg.edit_text("No filters in this chat, nothing to stop!")
+                msg.edit_text("Filter save lai a awmlo!")
                 return
 
             count = 0
@@ -546,32 +546,32 @@ def rmall_callback(update, context):
             msg.edit_text(f"Cleaned {count} filters in {chat.title}")
 
         if member.status == "administrator":
-            query.answer("Only owner of the chat can do this.")
+            query.answer("Group saimtu chiah in hei chu a tithei.")
 
         if member.status == "member":
-            query.answer("You need to be admin to do this.")
+            query.answer("He thil ti ve tur hi chuan admin i nih angai.")
     elif query.data == "filters_cancel":
         if member.status == "creator" or query.from_user.id in DRAGONS:
-            msg.edit_text("Clearing of all filters has been cancelled.")
+            msg.edit_text("Filter zawng zawng clear tum chu cancel ani e.")
             return
         if member.status == "administrator":
-            query.answer("Only owner of the chat can do this.")
+            query.answer("Group saimtu chiah in hei chu a tithei.")
         if member.status == "member":
-            query.answer("You need to be admin to do this.")
+            query.answer("He thil ti ve tur hi chuan admin i nih angai.")
 
 
 # NOT ASYNC NOT A HANDLER
 def get_exception(excp, filt, chat):
     if excp.message == "Unsupported url protocol":
         return "You seem to be trying to use the URL protocol which is not supported. Telegram does not support key for multiple protocols, such as tg: //. Please try again!"
-    elif excp.message == "Reply message not found":
+    elif excp.message == "I message reply hi hmuh ani lo":
         return "noreply"
     else:
-        LOGGER.warning("Message %s could not be parsed", str(filt.reply))
+        LOGGER.warning("Message %s hi a parse theihloh", str(filt.reply))
         LOGGER.exception(
-            "Could not parse filter %s in chat %s", str(filt.keyword), str(chat.id)
+            "Filter %s hi Group ah a parse theihloh %s", str(filt.keyword), str(chat.id)
         )
-        return "This data could not be sent because it is incorrectly formatted."
+        return "Format a diklo."
 
 
 # NOT ASYNC NOT A HANDLER
@@ -579,7 +579,7 @@ def addnew_filter(update, chat_id, keyword, text, file_type, file_id, buttons):
     msg = update.effective_message
     totalfilt = sql.get_chat_triggers(chat_id)
     if len(totalfilt) >= 150:  # Idk why i made this like function....
-        msg.reply_text("This group has reached its max filters limit of 150.")
+        msg.reply_text("He group in filter a set theih zat 150 a tling tawh.")
         return False
     else:
         sql.new_add_filter(chat_id, keyword, text, file_type, file_id, buttons)
@@ -603,32 +603,29 @@ def __migrate__(old_chat_id, new_chat_id):
 
 def __chat_settings__(chat_id, user_id):
     cust_filters = sql.get_chat_triggers(chat_id)
-    return "There are `{}` custom filters here.".format(len(cust_filters))
+    return "He Group ah hian filter `{}` lai a awm.".format(len(cust_filters))
 
 
 __help__ = """
-❂ /filters*:* List all active filters saved in the chat.
-*Admin only:*
-❂ /filter <keyword> <reply message>*:* Add a filter to this chat. The bot will now reply that message whenever 'keyword'\
-is mentioned. If you reply to a sticker with a keyword, the bot will reply with that sticker. NOTE: all filter \
-keywords are in lowercase. If you want your keyword to be a sentence, use quotes. eg: /filter "hey there" How you \
+❂ /filters*:* Filter dahṭhat en na.
+*Admin Tan Bik:*
+❂ /filter (koh chhuahna tur) (reply na tur)*:* Filter koh chhuahna tur a i siam leh reply na tur a i siam ang khan message an rawn thawn veleh ka reply ang.. /nNOTE: Reply na tur hi a koh chhuahna pakhat ah hian chi hrang hrang a reply tur in a tih theih a,a hnuai a hi a tihdan. Entirnan: /filter "chibai" enge i an \
 doin?
- Separate diff replies by `%%%` to get random replies
- *Example:* 
- `/filter "filtername"
+ Hetiang then hran hian `%%%` reply hran theuh a nei
+ *Entirnan:* 
+ `/filter "filter hming"
  Reply 1
  %%%
  Reply 2
  %%%
  Reply 3`
 
-❂ /stop <filter keyword>*:* Stop that filter.
+❂ /stop <filter keyword>*:* Filter paih leh na.
 
-*Chat creator only:*
+*Group creator tan:*
 
-❂ /removeallfilters*:* Remove all chat filters at once.
-*Note*: Filters also support markdown formatters like: {first}, {last} etc.. and buttons.
-Check /markdownhelp to know more!
+❂ /removeallfilters*:* A rual a filter zawng zawng paih na.
+*Note*:Filter ah hian hming vel te kha ziah chawp ngailo in a dah theih a, a tihdan chu /markdownhelp tih hi min thawn la i chhiar thei ang.
 """
 
 __mod_name__ = "Filters"
