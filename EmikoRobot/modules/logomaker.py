@@ -44,10 +44,10 @@ def mediainfo(media):
 
 @register(pattern="^/logo ?(.*)")
 async def logo_gen(event):
-    xx = await event.reply("`Preparing your logo...`")
+    xx = await event.reply("`I logo tur buatsaih mek ani e...`")
     name = event.pattern_match.group(1)
     if not name:
-        await xx.edit("`Provide some text to draw!\nExample: /logo <your name>!`")
+        await xx.edit("`Thuziak tal lo dah la!\nEntirnan: /logo <i hming>!`")
         return
     bg_, font_ = "", ""
     if event.reply_to_msg_id:
@@ -113,7 +113,7 @@ async def logo_gen(event):
         await tbot.send_file(
             event.chat_id,
             file=flnme,
-            caption="Logo by [Emiko Robot](https://t.me/EmiexRobot)",
+            caption="Logo by [Lynn](https://t.me/Lynnchawngthu_bot)",
             force_document=False,
         )
         os.remove(flnme)
@@ -130,7 +130,7 @@ async def logo_(event):
     xx = await event.reply("`Preparing your logo...`")
     name = event.pattern_match.group(1)
     if not name:
-        await xx.edit("`Provide some text to draw!\nExample: /wlogo <your name>!`")
+        await xx.edit("`Thuziak tallo dah la!\nEntirnan: /wlogo <i hming>!`")
         return
     bg_, font_ = "", ""
     if event.reply_to_msg_id:
@@ -196,7 +196,7 @@ async def logo_(event):
         await tbot.send_file(
             event.chat_id,
             file=flnme,
-            caption="Logo by [Emiko Robot](https://t.me/EmiexRobot)",
+            caption="Logo by [Lynn](https://t.me/Lynnchawngthu_bot)",
             force_document=False,
         )
         os.remove(flnme)
@@ -210,12 +210,12 @@ async def logo_(event):
 
 __mod_name__ = "Logomaker"
 
-__help__ = """ This is help menu for logomaker
+__help__ = """ Logomaker hmandan
 
-❂ /logo <text/name> - Create a logo with random view.
-❂ /wlogo <text/name> - Create a logo with wide view only.
+❂ /logo <text/hming> - Logo siana.
+❂ /wlogo <text/hming> - Wide view a logo siamna.
 
  Image Editor :
 
-❂  /edit <reply photo> - to edit image.
+❂  /edit <thlalak reply tur> - Thlalak edit na.
 """
