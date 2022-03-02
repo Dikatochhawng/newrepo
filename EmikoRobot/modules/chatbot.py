@@ -49,7 +49,7 @@ en_chats = []
 async def hmm(_, message):
     global ewe_chats
     if len(message.command) != 2:
-        await message.reply_text("I only recognize /chatbot on and /chatbot off only")
+        await message.reply_text("Heng command chiah hi kahrethiam /chatbot on and /chatbot off")
         message.continue_propagation()
     status = message.text.split(None, 1)[1]
     chat_id = message.chat.id
@@ -57,7 +57,7 @@ async def hmm(_, message):
         lel = await edit_or_reply(message, "`Processing...`")
         lol = add_chat(int(message.chat.id))
         if not lol:
-            await lel.edit("Emiko AI Already Activated In This Chat")
+            await lel.edit("Lynn AI hi Activate anitawh")
             return
         await lel.edit(f"Emiko AI Actived by {message.from_user.mention()} for users in {message.chat.title}")
 
@@ -65,19 +65,19 @@ async def hmm(_, message):
         lel = await edit_or_reply(message, "`Processing...`")
         Escobar = remove_chat(int(message.chat.id))
         if not Escobar:
-            await lel.edit("Emiko AI Was Not Activated In This Chat")
+            await lel.edit("Lynn AI hi Activate ala nilo")
             return
-        await lel.edit(f"Emiko AI Deactivated by {message.from_user.mention()} for users in {message.chat.title}")
+        await lel.edit(f"Lynn AI hi{message.from_user.mention()} hian {message.chat.title} ah a deactivate e")
 
     elif status == "EN" or status == "en" or status == "english":
         if not chat_id in en_chats:
             en_chats.append(chat_id)
-            await message.reply_text(f"English AI chat Enabled by {message.from_user.mention()}")
+            await message.reply_text(f"English AI chiah tihnun ani {message.from_user.mention()}")
             return
-        await message.reply_text(f"English AI Chat Disabled by {message.from_user.mention()}")
+        await message.reply_text(f"English AI ti thi tu chu {message.from_user.mention()} ani")
         message.continue_propagation()
     else:
-        await message.reply_text("I only recognize `/chatbot on` and `chatbot off` only")
+        await message.reply_text("Heng command chiah hi kahrethiam /chatbot on and /chatbot off")
 
 
 @pbot.on_message(
@@ -108,7 +108,7 @@ async def hmm(client, message):
         test = msg
         test = test.replace("emiko", "Aco")
         test = test.replace("emiko", "Aco")
-        test = test.replace("My god is @excrybaby", "I'm a Christian")
+        test = test.replace("Ka bialpa chu is @Didiktea ani a", "Ka hmangaih hle")
         test = test.replace("16", "9")
         test = test.replace("@excrybaby is my husband.", "I'm single.")
         test = test.replace("My husband is @excrybaby", "I'm single.")
@@ -120,7 +120,7 @@ async def hmm(client, message):
             "Hi, my friend! Do you want me to tell you a joke?")
         test = test.replace("@excrybaby is my owner", "Have the control right.")
         test = test.replace(
-            "Hi, My name is Emiko Nice to meet you.",
+            "Hi, My name is Lynn Nice to meet you.",
             "Hi, my friend, what can I do for you today?")
         response = await lunaQuery(
             test, message.from_user.id if message.from_user else 0
@@ -434,10 +434,10 @@ async def inuka(client, message):
 
 
 __help__ = """
-❂ Emiko AI is the only ai system which can detect & reply upto 200 language's
+❂ Lynn AI hi tawng chihrang 200 chuang in a biak theih
 
-❂ /chatbot [ON/OFF]: Enables and disables AI Chat mode.
-❂ /chatbot EN : Enables English only chatbot.
+❂ /chatbot [ON/OFF]: Chatbot tihnun na leh tih thih na.
+❂ /chatbot EN : English chiah a Biak theih a AI dahna.
 """
 
 __mod_name__ = "Chatbot"
