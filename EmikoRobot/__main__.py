@@ -424,9 +424,9 @@ def emiko_about_callback(update, context):
     elif query.data == "emiko_notes":
         query.message.edit_text(
             text=f"<b>๏ Notes Save Dan</b>"
-            f"\nGroup ah message/media/audio emaw engpawh notes ah i save thei"
-            f"\nI note save i kohchhuah duh chuan note hming hma ah # hi i dah thin dawn nia"
-            f"\n\nFilter leh note hi Button tel pawn a set theih bawk",
+            f"\nGroup ah message/media/audio emaw engpawh notes ah i save thei a,"
+            f"\nI note save i kohchhuah duh chuan note hming hma ah # hi i dah thin dawn nia."
+            f"\n\nFilter leh note hi Button tel pawn a set theih bawk ang.",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Go Back", callback_data="emiko_")]]
@@ -435,7 +435,7 @@ def emiko_about_callback(update, context):
     elif query.data == "emiko_support":
         query.message.edit_text(
             text="*๏ Lynn support chats*"
-            "\nLynn Bot aharsatna i tawh loh nan Support Group/Channel hi ilo join dawn nia.",
+            "\nLynn Bot a harsatna i tawh loh nan Support Group leh Channel khu ilo join dawn nia.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -455,12 +455,13 @@ def emiko_about_callback(update, context):
     elif query.data == "emiko_credit":
         query.message.edit_text(
             text=f"๏ Lynn Bot Siamtu\n"
-            "\nRIm tak leh hah tak aHe Bot hi siam ani",
+            "\nRim tak leh hah tak a he Bot hi a hnuai a mi te siam ani",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Didiktea", url="https://t.me/Didiktea"),
+                    InlineKeyboardButton(text="DIDIKTEA", url="https://t.me/Didiktea"),
+                    InlineKeyboardButton(text="RSR-TG-INFO", url="https://t.me/rsrmusic"),
                  ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
