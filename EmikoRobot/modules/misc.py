@@ -35,24 +35,24 @@ MARKDOWN_HELP = f"""
 Markdown is a very powerful formatting tool supported by telegram. {dispatcher.bot.first_name} has some enhancements, to make sure that \
 saved messages are correctly parsed, and to allow you to create buttons.
 
-❂ <code>_italic_</code>: wrapping text with '_' will produce italic text
-❂ <code>*bold*</code>: wrapping text with '*' will produce bold text
-❂ <code>`code`</code>: wrapping text with '`' will produce monospaced text, also known as 'code'
-❂ <code>[sometext](someURL)</code>: this will create a link - the message will just show <code>sometext</code>, \
-and tapping on it will open the page at <code>someURL</code>.
-<b>Example:</b><code>[test](example.com)</code>
+❂ <code>_italic_</code>: 👈 He mi sign a i thu hual khung a piang kha italic text (hawrawp âwn) ah a chang ang.
+❂ <code>*bold*</code>: 👈 He mi sign hmang a i thu hual khung a piang kha bold text (hawrawp lian) ah a chang ang
+❂ <code>`code`</code>: 👈 He mi sign a i thu hual khung a piang kha monospace text (hawrawp inkar zau) ah a chang ang.
+❂ <code>[sometext](someURL)</code>: 👈 He mi sign a i thu hual khung a piang kha link - ah a chang zel ang <code>sometext</code>, \
+han ticchin mah teh <code>someURL</code>.
+<b>Example:</b><code>[Didiktea](example.com)</code>
 
-❂ <code>[buttontext](buttonurl:someURL)</code>: this is a special enhancement to allow users to have telegram \
-buttons in their markdown. <code>buttontext</code> will be what is displayed on the button, and <code>someurl</code> \
-will be the url which is opened.
-<b>Example:</b> <code>[This is a button](buttonurl:example.com)</code>
+❂ <code>[buttontext](buttonurl:someURL)</code>: Button siamdan ania, Button hming tur tih aia i hming dah kha Button a thu awm tur ania,  \
+buttonurl: tih zawh a i link dah kha button an hmeh veleh an lut thei ang \
+(link ah khan https:// tih lai chin zawng kha paih zel tur).
+<b>Example:</b> <code>[Didiktea](buttonurl:example.com)</code>
 
-If you want multiple buttons on the same line, use :same, as such:
-<code>[one](buttonurl://example.com)
-[two](buttonurl://google.com:same)</code>
-This will create two buttons on a single line, instead of one button per line.
+Button hi line khat ah pakhat aia tam a dah theih a, a tihdan chu
 
-Keep in mind that your message <b>MUST</b> contain some text other than just a button!
+[Button 1](buttonurl://example.com)
+[Button 1](buttonurl://google.com:same)
+
+Tihian button hi a indawt a awm kher lo in line khat ah pakhat aia tam i dah thei ang!
 """
 
 
@@ -184,24 +184,24 @@ def wall(update: Update, context: CallbackContext):
 __help__ = """
 *Available commands:*
 
-❂ /markdownhelp*:* quick summary of how markdown works in telegram - can only be called in private chats
-❂ /paste*:* Saves replied content to `nekobin.com` and replies with a url
-❂ /react*:* Reacts with a random reaction 
-❂ /ud <word>*:* Type the word or expression you want to search use
-❂ /reverse*:* Does a reverse image search of the media which it was replied to.
-❂ /wiki <query>*:* wikipedia your query
-❂ /wall <query>*:* get a wallpaper from wall.alphacoders.com
-❂ /cash*:* currency converter
- Example:
+❂ /markdownhelp*:* Markdownhelp a hman theih command te
+❂ /paste*:* kan thu type te link a siam na
+❂ /react*:* React na 
+❂ /ud <Thu>*:* Thu type rawh
+❂ /reverse*:* Thlalak leh sticker zawnna.
+❂ /wiki <query>*:* wikipedia a thil zawnna
+❂ /wall <query>*:* Wallpaper zawnna
+❂ /cash*:* currency Hriatna
+ Entirna:
  `/cash 1 USD INR`  
       _OR_
  `/cash 1 usd inr`
  Output: `1.0 USD = 75.505 INR`
 
 *Music Modules:*
-❂ /video or /vsong (query): download video from youtube
-❂ /music or /song (query): download song from yt servers. (API BASED)
-❂ /lyrics (song name) : This plugin searches for song lyrics with song name.
+❂ /song emaw /music (hla hming) : Command zawh a hla hming i dah in youtube ami hla i download thei ang(hla hming aiah youtube link pawh a hman theih).
+❂ /video emaw /vsong(hla hming) : Command zawh a hla hming i dah in youtube ami video i download thei ang(hla hming aiah youtube link pawh a hman theih).
+❂ /lyrics (hla hming) : Command zawh a hla hming i dah in a lyrics ka pe ang che.
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler(
