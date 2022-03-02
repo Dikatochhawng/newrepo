@@ -53,25 +53,25 @@ async def is_administrator(user_id: int, message):
 async def rm_deletedacc(show):
     con = show.pattern_match.group(1).lower()
     del_u = 0
-    del_status = "**Group clean, not found the deleted account.**"
+    del_status = "**Group ah hian delete account hmuh ani lo.**"
     if con != "clean":
-        kontol = await show.reply("`Searching deleted account...`")
+        kontol = await show.reply("`Delete account zawngmek...`")
         async for user in show.client.iter_participants(show.chat_id):
             if user.deleted:
                 del_u += 1
                 await sleep(1)
         if del_u > 0:
             del_status = (
-                f"**Founding** `{del_u}` **Deleted account/Zombie On this group,"
-                "\nClean it with command** `/zombies clean`"
+                f"**Hmuhzat** `{del_u}` **He group a Delete account/Zombie,"
+                "\nHe command hian thianfai rawh** `/zombies clean`"
             )
         return await kontol.edit(del_status)
     chat = await show.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
     if not admin and not creator:
-        return await show.reply("**Sorry you're not admin!**")
-    memek = await show.reply("`Deleting deleted account...`")
+        return await show.reply("**Admin i ni tlat lo!**")
+    memek = await show.reply("` delete account thenfaimek ani...`")
     del_u = 0
     del_a = 0
     async for user in telethn.iter_participants(show.chat_id):
@@ -92,7 +92,7 @@ async def rm_deletedacc(show):
     if del_a > 0:
         del_status = (
             f"**Cleaned** `{del_u}` **Zombies** "
-            f"\n`{del_a}` **Admin zombies not deleted.**"
+            f"\n`{del_a}` **Admin zombies chu delete ani lo.**"
         )
     await memek.edit(del_status)
 
