@@ -80,8 +80,8 @@ def get(update, context, notename, show_none=True, no_format=False):
                 except BadRequest as excp:
                     if excp.message == "Message to forward not found":
                         message.reply_text(
-                            "He message hi a awm tawhlo anih hmel - kan remove ange "
-                            "i note list atangin.",
+                            "This message seems to have been lost - I'll remove it "
+                            "from your notes list.",
                         )
                         sql.rm_note(note_chat_id, notename)
                     else:
@@ -209,8 +209,8 @@ def get(update, context, notename, show_none=True, no_format=False):
                     sql.rm_note(note_chat_id, notename)
                 else:
                     message.reply_text(
-                        "He note hi a thawn theih loh, a format a diklo. I duhchuan "
-                        f"@{SUPPORT_CHAT} ah hian lo zawt chiang mai rawh!",
+                        "This note could not be sent, as it is incorrectly formatted. Ask in "
+                        f"@{SUPPORT_CHAT} if you can't figure out why!",
                     )
                     LOGGER.exception(
                         "Could not parse message #%s in chat %s",
@@ -220,7 +220,7 @@ def get(update, context, notename, show_none=True, no_format=False):
                     LOGGER.warning("Message was: %s", str(note.value))
         return
     if show_none:
-        message.reply_text("He notes hi chu a awm tawhlo")
+        message.reply_text("This note doesn't exist")
 
 
 @connection_status
@@ -253,7 +253,7 @@ def slash_get(update: Update, context: CallbackContext):
         note_name = str(noteid).strip(">").split()[1]
         get(update, context, note_name, show_none=False)
     except IndexError:
-        update.effective_message.reply_text("Note ID a diklo 😾")
+        update.effective_message.reply_text("Wrong Note ID 😾")
 
 
 @user_admin
@@ -265,7 +265,7 @@ def save(update: Update, context: CallbackContext):
     note_name, text, data_type, content, buttons = get_note_type(msg)
     note_name = note_name.lower()
     if data_type is None:
-        msg.reply_text("Ka thian, note engmah a awmlo")
+        msg.reply_text("Dude, there's no note")
         return
 
     sql.add_note_to_db(
@@ -278,7 +278,7 @@ def save(update: Update, context: CallbackContext):
     )
 
     msg.reply_text(
-        f"Awle!  `{note_name}` hi note ah ka add tawh e.\nHemi hmang hian i ko chhuak thei ang /get `{note_name}`, emaw `#{note_name}`",
+        f"Yas! Added `{note_name}`.\nGet it with /get `{note_name}`, or `#{note_name}`",
         parse_mode=ParseMode.MARKDOWN,
     )
 
@@ -335,7 +335,7 @@ def clearall(update: Update, context: CallbackContext):
             ],
         )
         update.effective_message.reply_text(
-            f"I chiang chiah maw {chat.title} a note awm te hi i clear duh taktak maw? A cancel theih tawhloh ania.",
+            f"Are you sure you would like to clear ALL notes in {chat.title}? This action cannot be undone.",
             reply_markup=buttons,
             parse_mode=ParseMode.MARKDOWN,
         )
@@ -358,18 +358,18 @@ def clearall_btn(update: Update, context: CallbackContext):
                 return
 
         if member.status == "administrator":
-            query.answer("Hei hi chu Group siamtu chiah in a ti thei.")
+            query.answer("Only owner of the chat can do this.")
 
         if member.status == "member":
-            query.answer("He thil hi chu Admin te chauhinan ti thei.")
+            query.answer("You need to be admin to do this.")
     elif query.data == "notes_cancel":
         if member.status == "creator" or query.from_user.id in DRAGONS:
-            message.edit_text("Note Clear tum chu cancel leh ani e.")
+            message.edit_text("Clearing of all notes has been cancelled.")
             return
         if member.status == "administrator":
-            query.answer("Heihi chu Group siamtu chiahin a ti thei.")
+            query.answer("Only owner of the chat can do this.")
         if member.status == "member":
-            query.answer("He thil ti tur hi chuan Admin nih angai.")
+            query.answer("You need to be admin to do this.")
 
 
 @connection_status
@@ -390,9 +390,9 @@ def list_notes(update: Update, context: CallbackContext):
 
     if not note_list:
         try:
-            update.effective_message.reply_text("Note Save lai a awmlo Group ah hian!")
+            update.effective_message.reply_text("No notes in this chat!")
         except BadRequest:
-            update.effective_message.reply_text("Note Save lai a awmlo Group ah hian!", quote=False)
+            update.effective_message.reply_text("No notes in this chat!", quote=False)
 
     elif len(msg) != 0:
         update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
@@ -547,32 +547,30 @@ def __chat_settings__(chat_id, user_id):
 
 
 __help__ = """
-❂ /get <note hming>*:* Note save te kohchhuah na
-❂ #<note hming>*:* /get hman na nen a in ang
-❂ /notes emaw /saved*:* Note save te en na.
-❂ /number *:* Note number enna.
-Group a note te format hmang lo a i enduh chuan,  `/get <note hming> noformat`. Tiang sawn \
-tila a awlsam
+❂ /get <notename>*:* get the note with this notename
+❂ #<notename>*:* same as /get
+❂ /notes or /saved*:* list all saved notes in this chat
+❂ /number *:* Will pull the note of that number in the list
+If you would like to retrieve the contents of a note without any formatting, use `/get <notename> noformat`. This can \
+be useful when updating a current note
 
-*Admins Tan bik:*
-❂ /save (note hming) (note data) *:* Note save na, note data tih hi thu emaw thlalak, video, button vel sawina aw,
-button siamdan tih vel te hi chu /markdownhelp \
-tih min thawn la i en thei ang.
-❂ /save (note hming) : He mi hi chu message reply nan a hman tur.
- Note reply na hi koh chhuahna pakhat ah pakhat aia tam reply na tur a siam theih a, hetiang hian.
- *Entirna:*
- `/save note hming
+*Admins only:*
+❂ /save <notename> <notedata>*:* saves notedata as a note with name notename
+A button can be added to a note by using standard markdown link syntax - the link should just be prepended with a \
+`buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check `/markdownhelp` for more info
+❂ /save <notename>*:* save the replied message as a note with name notename
+ Separate diff replies by `%%%` to get random notes
+ *Example:*
+ `/save notename
  Reply 1
  %%%
  Reply 2
  %%%
- Reply 3
+ Reply 3`
+❂ /clear <notename>*:* clear note with this name
+❂ /removeallnotes*:* removes all notes from the group
 
- % Hemi sign hi hman tur.
-❂ /clear (note hming) *:* Note save tawh paih leh na.
-❂ /removeallnotes : A rual a vawikhat a Note awm te paih vek na
-
- *Note:* Note hi Group a thil dahṭhat na'n vel te ṭangkai tak a hman ani ṭhin.
+ *Note:* Note names are case-insensitive, and they are automatically converted to lowercase before getting saved.
 """
 
 __mod_name__ = "Notes"
