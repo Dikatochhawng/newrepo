@@ -198,12 +198,12 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
                 update.effective_message.reply_text(
-                    f"Welcome to {html.escape(chat.title)} my king.", reply_to_message_id=reply
+                    f"Ka duhlai {html.escape(chat.title)} ah kanlo lawm a che.", reply_to_message_id=reply
                 )
                 welcome_log = (
                     f"{html.escape(chat.title)}\n"
                     f"#USER_JOINED\n"
-                    f"My King just joined the chat"
+                    f"Ka Bialpa in Group alo join e"
                 )
                 continue
 
@@ -725,18 +725,18 @@ def welcome(update: Update, context: CallbackContext):
         if args[0].lower() in ("on", "yes"):
             sql.set_welc_preference(str(chat.id), True)
             update.effective_message.reply_text(
-                "Okay! I'll greet members when they join."
+                "Awle, member thar ten an lo join apiang in kalo welcome ang."
             )
 
         elif args[0].lower() in ("off", "no"):
             sql.set_welc_preference(str(chat.id), False)
             update.effective_message.reply_text(
-                "I'll go loaf around and not welcome anyone then."
+                "Awle, member thar ten an lo join in kalo welcome tawhlo ang."
             )
 
         else:
             update.effective_message.reply_text(
-                "I understand 'on/yes' or 'off/no' only!"
+                "Heng command chiah hi ka hrethiam 'on/yes' emaw 'off/no'!"
             )
 
 
@@ -786,7 +786,7 @@ def goodbye(update: Update, context: CallbackContext):
         else:
             # idek what you're writing, say yes or no
             update.effective_message.reply_text(
-                "I understand 'on/yes' or 'off/no' only!"
+                "Heng command chiah hi ka hrethiam 'on/yes' emaw 'off/no'!"
             )
 
 
@@ -804,13 +804,13 @@ def set_welcome(update: Update, context: CallbackContext) -> str:
         return ""
 
     sql.set_custom_welcome(chat.id, content, text, data_type, buttons)
-    msg.reply_text("Successfully set custom welcome message!")
+    msg.reply_text("welcome message set ani e!")
 
     return (
         f"<b>{html.escape(chat.title)}:</b>\n"
         f"#SET_WELCOME\n"
         f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-        f"Set the welcome message."
+        f"welcome message set ani e."
     )
 
 
@@ -822,14 +822,14 @@ def reset_welcome(update: Update, context: CallbackContext) -> str:
 
     sql.set_custom_welcome(chat.id, None, random.choice(sql.DEFAULT_WELCOME_MESSAGES), sql.Types.TEXT)
     update.effective_message.reply_text(
-        "Successfully reset welcome message to default!"
+        "welcome message default ah reset a ni e!"
     )
 
     return (
         f"<b>{html.escape(chat.title)}:</b>\n"
         f"#RESET_WELCOME\n"
         f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-        f"Reset the welcome message to default."
+        f"welcome message default ah reset a ni e."
     )
 
 
@@ -846,12 +846,12 @@ def set_goodbye(update: Update, context: CallbackContext) -> str:
         return ""
 
     sql.set_custom_gdbye(chat.id, content or text, data_type, buttons)
-    msg.reply_text("Successfully set custom goodbye message!")
+    msg.reply_text("Goodbye message set fel ani e!")
     return (
         f"<b>{html.escape(chat.title)}:</b>\n"
         f"#SET_GOODBYE\n"
         f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-        f"Set the goodbye message."
+        f"Hian Goodbye message a set fel e."
     )
 
 
@@ -906,7 +906,7 @@ def welcomemute(update: Update, context: CallbackContext) -> str:
         if args[0].lower() in ["strong"]:
             sql.set_welcome_mutes(chat.id, "strong")
             msg.reply_text(
-                "Tun atang chuan member thar te ka lo mute zel tawh ang mihring an ni tih sn prove hma chuan.\nKa kick hma in 120seconds an nei ang."
+                "Tun atang chuan member thar te ka lo mute zel tawh ang mihring an ni tih an prove hma chuan.\nKa kick hma in 120seconds an nei ang."
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
@@ -1229,7 +1229,7 @@ def __chat_settings__(chat_id, _):
 
 
 __help__ = """
-*Admins only:*
+*Admins Tan bik:*
 ❂ /welcome <on/off>*:* i on chuan mi ka welcome anga, i off chuan ka welcome theilo ang.
 ❂ /welcome*:* Group a welcome message an hman mek en na.
 ❂ /welcome noformat*:* Format tello a welcome message enna!
