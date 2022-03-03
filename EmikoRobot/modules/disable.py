@@ -318,9 +318,9 @@ if is_module_loaded(FILENAME):
 
 
     __help__ = """
-❂ /cmds*:* check the current status of disabled commands
+❂ /cmds*:* Command disable lai enna.
 
-*Admins only:*
+*Admins Tan bik:*
 
 ❂ /enable <cmd name>*:* Command enable na
 ❂ /disable <cmd name>*:* Command disable na
