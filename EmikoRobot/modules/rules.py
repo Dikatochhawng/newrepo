@@ -106,14 +106,14 @@ def set_rules(update: Update, context: CallbackContext):
         )
 
         sql.set_rules(chat_id, markdown_rules)
-        update.effective_message.reply_text("Successfully set rules for this group.")
+        update.effective_message.reply_text("He Group rules tur hi set fel ani ta e.")
 
 
 @user_admin
 def clear_rules(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     sql.set_rules(chat_id, "")
-    update.effective_message.reply_text("Successfully cleared rules!")
+    update.effective_message.reply_text("He Group Ruleshi clear ani!")
 
 
 def __stats__():
