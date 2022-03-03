@@ -97,16 +97,16 @@ def send(update, message, keyboard, backup_message):
                 markdown_parser(
                     (
                         backup_message
-                        + "\nNote: the current message has an invalid url in one of its buttons. Please update."
+                        + "\nNote: I button siam a url hi a diklo. Siamtha rawh."
                     )
                 ),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_to_message_id=reply,
             )
 
-        elif excp.message == "Have no rights to send a message":
+        elif excp.message == "Message thawn theih ani lo":
             return
-        elif excp.message == "Replied message not found":
+        elif excp.message == "I message reply hi ka hmu lo":
             msg = update.effective_message.reply_text(
                 message,
                 parse_mode=ParseMode.MARKDOWN,
@@ -114,24 +114,24 @@ def send(update, message, keyboard, backup_message):
                 quote=False,
             )
 
-        elif excp.message == "Unsupported url protocol":
+        elif excp.message == "Url a support lo":
             msg = update.effective_chat.send_message(
                 markdown_parser(
                     (
                         backup_message
-                        + "\nNote: the current message has buttons which use url protocols that are unsupported by telegram. Please update."
+                        + "\nNote: I button siam a url hi a diklo. Siamtha rawh."
                     )
                 ),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_to_message_id=reply,
             )
 
-        elif excp.message == "Wrong url host":
+        elif excp.message == "Url hi a diklo":
             msg = update.effective_chat.send_message(
                 markdown_parser(
                     (
                         backup_message
-                        + "\nNote: the current message has some bad urls. Please update."
+                        + "\nNote: I button siam a url hi a diklo. Siamtha rawh."
                     )
                 ),
                 parse_mode=ParseMode.MARKDOWN,
@@ -146,7 +146,7 @@ def send(update, message, keyboard, backup_message):
                 markdown_parser(
                     (
                         backup_message
-                        + "\nNote: An error occured when sending the custom message. Please update."
+                        + "\nNote: I custom message thawn lai a felhlel tlat. Siamtha rawh."
                     )
                 ),
                 parse_mode=ParseMode.MARKDOWN,
@@ -368,12 +368,12 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                     f"[{escape_markdown(new_mem.first_name)}](tg://user?id={user.id})"
                 )
                 message = msg.reply_text(
-                    f"{new_join_mem}, click the button below to prove you're human.\nYou have 120 seconds.",
+                    f"{new_join_mem}, Mihring i ni ngei ani tih fiah nan a hnuai aButton khuhmet rawh.\n120 second hun i nei e.",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             {
                                 InlineKeyboardButton(
-                                    text="Yes, I'm human.",
+                                    text="Aw, Mihring ka ni e.",
                                     callback_data=f"user_join_({new_mem.id})",
                                 )
                             }
@@ -472,7 +472,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
 
                 message = msg.reply_photo(
                     fileobj,
-                    caption=f"Welcome [{escape_markdown(new_mem.first_name)}](tg://user?id={user.id}). Click the correct button to get unmuted!",
+                    caption=f"Welcome [{escape_markdown(new_mem.first_name)}](tg://user?id={user.id}). In unmute turin Button hi hmet rawh!",
                     reply_markup=InlineKeyboardMarkup(btn),
                     parse_mode=ParseMode.MARKDOWN,
                     reply_to_message_id=reply,
@@ -561,7 +561,7 @@ def check_not_bot(member, chat_id, message_id, context):
 
         try:
             bot.edit_message_text(
-                "*kicks user*\nThey can always rejoin and try.",
+                "*kicks A ni*\nDuh leh an lo join leh thei tho.",
                 chat_id=chat_id,
                 message_id=message_id,
             )
@@ -610,14 +610,14 @@ def left_member(update: Update, context: CallbackContext):  # sourcery no-metric
             # Give the owner a special goodbye
             if left_mem.id == OWNER_ID:
                 update.effective_message.reply_text(
-                    "Sorry to see you leave :(", reply_to_message_id=reply
+                    "Min chhuahsan hi kan va ui che em :(", reply_to_message_id=reply
                 )
                 return
 
             # Give the devs a special goodbye
             if left_mem.id in DEV_USERS:
                 update.effective_message.reply_text(
-                    "See you later at the Eagle Union!",
+                    "Kan in hmu leh dawn nia!",
                     reply_to_message_id=reply,
                 )
                 return
@@ -687,8 +687,8 @@ def welcome(update: Update, context: CallbackContext):
         noformat = True
         pref, welcome_m, cust_content, welcome_type = sql.get_welc_pref(chat.id)
         update.effective_message.reply_text(
-            f"This chat has it's welcome setting set to: `{pref}`.\n"
-            f"*The welcome message (not filling the {{}}) is:*",
+            f"He group welcome setting set lai chu: `{pref}`.\n"
+            f"*(not filling the {{}}) Welcome Message chu:*",
             parse_mode=ParseMode.MARKDOWN,
         )
 
@@ -749,8 +749,8 @@ def goodbye(update: Update, context: CallbackContext):
         noformat = True
         pref, goodbye_m, goodbye_type = sql.get_gdbye_pref(chat.id)
         update.effective_message.reply_text(
-            f"This chat has it's goodbye setting set to: `{pref}`.\n"
-            f"*The goodbye  message (not filling the {{}}) is:*",
+            f"He group Goodbye message setting set lai chu: `{pref}`.\n"
+            f"*(not filling the {{}}) goodbye mwssage chu:*",
             parse_mode=ParseMode.MARKDOWN,
         )
 
@@ -800,7 +800,7 @@ def set_welcome(update: Update, context: CallbackContext) -> str:
     text, data_type, content, buttons = get_welcome_type(msg)
 
     if data_type is None:
-        msg.reply_text("You didn't specify what to reply with!")
+        msg.reply_text("Reply tur sawi chiang rawh!")
         return ""
 
     sql.set_custom_welcome(chat.id, content, text, data_type, buttons)
@@ -842,7 +842,7 @@ def set_goodbye(update: Update, context: CallbackContext) -> str:
     text, data_type, content, buttons = get_welcome_type(msg)
 
     if data_type is None:
-        msg.reply_text("You didn't specify what to reply with!")
+        msg.reply_text("Reply tur sawi chiang rawh!")
         return ""
 
     sql.set_custom_gdbye(chat.id, content or text, data_type, buttons)
@@ -917,7 +917,7 @@ def welcomemute(update: Update, context: CallbackContext) -> str:
         if args[0].lower() in ["captcha"]:
             sql.set_welcome_mutes(chat.id, "captcha")
             msg.reply_text(
-                "I will now mute people when they join until they prove they're not a bot.\nThey have to solve a captcha to get unmuted."
+                "Tun atang chuan member thar te ka lo mute zel tawh ang mihring an ni tih an prove hma chuan.\nunmute tur chuan captcha hi an solve angai."
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
@@ -1009,7 +1009,7 @@ def cleanservice(update: Update, context: CallbackContext) -> str:
             )
     else:
         update.effective_message.reply_text(
-            "Usage is on/yes or off/no", parse_mode=ParseMode.MARKDOWN
+            "Usage hi a in on/yes emaw off/no", parse_mode=ParseMode.MARKDOWN
         )
 
 
@@ -1147,9 +1147,9 @@ def user_captcha_button(update: Update, context: CallbackContext):
             except:
                 pass
             kicked_msg = f"""
-            ❌ [{escape_markdown(join_usr_data.first_name)}](tg://user?id={join_user}) failed the captcha and was kicked.
+            ❌ [{escape_markdown(join_usr_data.first_name)}](tg://user?id={join_user}) captcha a solve theihloh avangin kick ani.
             """
-            query.answer(text="Wrong answer")
+            query.answer(text="chhanna diklo")
             res = chat.unban_member(join_user)
             if res:
                 bot.sendMessage(
@@ -1157,12 +1157,12 @@ def user_captcha_button(update: Update, context: CallbackContext):
                 )
 
     else:
-        query.answer(text="You're not allowed to do this!")
+        query.answer(text="He thil ti ve tur hian phalna pek i nilo!")
 
 
 WELC_HELP_TXT = (
-    "Your group's welcome/goodbye messages can be personalised in multiple ways. If you want the messages"
-    " to be individually generated, like the default welcome message is, you can use *these* variables:\n"
+    "I group welcome/goodbye messages hi i duh dan dan in i set thei a,"
+    " Pangngai taka i set duh chuan a *hnuai ami* te khu nguntakin chhiar rawh:\n"
     "  • `{first}`*:* tih i dah chuan user hming hmasa kha alang ang\n"
     "  • `{last}`*:* tih i dah chuan user hming hnuhnung zawk kha alang ang.\n"
     "  • `{fullname}`*:* tih i dah chuan an hmingpum alang ang.\n"
@@ -1171,13 +1171,13 @@ WELC_HELP_TXT = (
     "  • `{id}`*:* tih i dah chuan an *ID* alang ang.\n"
     "  • `{count}`*:* tih i dah chuan an member nihna zat alang ang.\n"
     "  • `{chatname}`*:* tih i dah chuan Group hming alang an.\n\n"
-    "\nBracket chuar {} hi hman ngei ngei tur aw, chuan welcome message ah hian button te a dah\n"
+    "\nBracket chuar { } hi hman ngei ngei tur aw, chuan welcome message ah hian button te a dah\n"
     "vek a, a tihdan chu /markdownhelp tih hi lo thawn la i chhiar thei ang.\n"
     "Buttons i hman chuan, welcome message a ti langnalh duh bawk.\n\n"
     f"Button hmang a rules i set duh chuan tiang hian i set dawn nia: `[Rules](buttonurl://t.me/{dispatcher.bot.username}?start=group_id)`. \n"
-    "Khita `group_id` tih khi i group id in i thlak dawn nia. \n"
-    "I Group id i hriat loh chuan Group ah khan /id tih hi thawn la alo lang mai ang. \n"
-    "I duh chuan images/gifs/videos/voice messages hmang pawhin welcome message i set thei a, \n"
+    "Khita `group_id` tih khi i group id in i thlak dawn nia. \n\n"
+    "I Group *id* i hriat loh chuan Group ah khan /id tih hi thawn la alo lang mai ang. \n\n"
+    "I duh chuan thlalak/gifs/videos/voice messages hmang pawhin welcome message i set thei a, \n"
     "Khing media zing a i duh ber khi `/setwelcome` tih in i reply dawn nia."
 )
 WELC_MUTE_HELP_TXT = (
