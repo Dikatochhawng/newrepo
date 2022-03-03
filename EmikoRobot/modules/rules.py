@@ -57,7 +57,7 @@ def send_rules(update, chat_id, from_pm=False):
         )
     elif rules and reply_msg:
         reply_msg.reply_text(
-            "A hnuai a Rules tih khu hmet la,\n *Start* tih kha i hmet leh dawn nia.",
+            "A hnuai a Rules tih khu hmet la,\n Start tih kha i hmet leh dawn nia.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -71,7 +71,7 @@ def send_rules(update, chat_id, from_pm=False):
         )
     elif rules:
         update.effective_message.reply_text(
-            "A hnuai a Rules tih khu hmet la, \n *Start* tih kha i hmet leh dawn nia",
+            "A hnuai a Rules tih khu hmet la, \n Start tih kha i hmet leh dawn nia",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
