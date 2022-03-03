@@ -93,12 +93,12 @@ PM_START_TEXT = """
 
 buttons = [
     [
-        InlineKeyboardButton(text="About Lynn Robot", callback_data="emiko_"),
+        InlineKeyboardButton(text="Min Hmet Suh ", callback_data="emiko_"),
     ],
     [
         InlineKeyboardButton(text="Get Help", callback_data="help_back"),
         InlineKeyboardButton(
-            text="Try inline!​​", switch_inline_query_current_chat=""
+            text="📖 Tutorial", url="https://t.me/lynnsupportgroup/26""
         ),
     ],
     [
