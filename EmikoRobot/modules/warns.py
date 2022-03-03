@@ -48,7 +48,7 @@ from telegram.utils.helpers import mention_html
 from EmikoRobot.modules.sql.approve_sql import is_approved
 
 WARN_HANDLER_GROUP = 9
-CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"
+CURRENT_WARNING_FILTER_STRING = "<b>Group a warning filter hman mek:</b>\n"
 
 
 # Not async
@@ -133,7 +133,7 @@ def warn(user: User,
         message.reply_text(
             reply, reply_markup=keyboard, parse_mode=ParseMode.HTML)
     except BadRequest as excp:
-        if excp.message == "Reply message not found":
+        if excp.message == "Message reply hi ka hmu lo":
             # Do not reply
             message.reply_text(
                 reply,
@@ -161,7 +161,7 @@ def button(update: Update, context: CallbackContext) -> str:
         if res:
             user_member = chat.get_member(user_id)
             update.effective_message.edit_text(
-                f"{mention_html(user_member.user.id, user_member.user.first_name)} [<code>{user_member.user.id}</code>] Warn removed.",
+                f"{mention_html(user_member.user.id, user_member.user.first_name)} [<code>{user_member.user.id}</code>] Warn na remove ani.",
                 parse_mode=ParseMode.HTML,
             )
             user_member = chat.get_member(user_id)
@@ -173,7 +173,7 @@ def button(update: Update, context: CallbackContext) -> str:
             )
         else:
             update.effective_message.edit_text(
-                "User already has no warns.", parse_mode=ParseMode.HTML
+                "User hi warn anilo.", parse_mode=ParseMode.HTML
             )
 
     return ""
@@ -207,7 +207,7 @@ def warn_user(update: Update, context: CallbackContext) -> str:
         else:
             return warn(chat.get_member(user_id).user, chat, reason, message, warner)
     else:
-        message.reply_text("That looks like an invalid User ID to me.")
+        message.reply_text("User ID hi invalid anih hmel.")
     return ""
 
 
@@ -225,7 +225,7 @@ def reset_warns(update: Update, context: CallbackContext) -> str:
 
     if user_id:
         sql.reset_warns(user_id, chat.id)
-        message.reply_text("Warns have been reset!")
+        message.reply_text("Warn na hi reset ani!")
         warned = chat.get_member(user_id).user
         return (
             f"<b>{html.escape(chat.title)}:</b>\n"
@@ -251,7 +251,7 @@ def warns(update: Update, context: CallbackContext):
 
         if reasons:
             text = (
-                f"This user has {num_warns}/{limit} warns, for the following reasons:"
+                f"{num_warns}/{limit} hi warn ani, a chhan chu:"
             )
             for reason in reasons:
                 text += f"\n {reason}"
@@ -261,10 +261,10 @@ def warns(update: Update, context: CallbackContext):
                 update.effective_message.reply_text(msg)
         else:
             update.effective_message.reply_text(
-                f"User has {num_warns}/{limit} warns, but no reasons for any of them."
+                f"{num_warns}/{limit} hi warn chhan awmlo a warn ani."
             )
     else:
-        update.effective_message.reply_text("This user doesn't have any warns!")
+        update.effective_message.reply_text("He user hi warn ani lo!")
 
 
 # Dispatcher handler stop - do not async
@@ -331,11 +331,11 @@ def remove_warn_filter(update: Update, context: CallbackContext):
     for filt in chat_filters:
         if filt == to_remove:
             sql.remove_warn_filter(chat.id, to_remove)
-            msg.reply_text("Okay, I'll stop warning people for that.")
+            msg.reply_text("Awle, mi warning ka pe tawhlo ang.")
             raise DispatcherHandlerStop
 
     msg.reply_text(
-        "That's not a current warning filter - run /warnlist for all active warning filters."
+        "Hei chu warning filter hman mek ani lo - i hriat duh chuan /warnlist tih hi lo thawn rawh."
     )
 
 
@@ -344,7 +344,7 @@ def list_warn_filters(update: Update, context: CallbackContext):
     all_handlers = sql.get_chat_warn_triggers(chat.id)
 
     if not all_handlers:
-        update.effective_message.reply_text("No warning filters are active here!")
+        update.effective_message.reply_text("Eng warning filter mah hman ani lo!")
         return
 
     filter_list = CURRENT_WARNING_FILTER_STRING
@@ -399,22 +399,22 @@ def set_warn_limit(update: Update, context: CallbackContext) -> str:
     if args:
         if args[0].isdigit():
             if int(args[0]) < 3:
-                msg.reply_text("The minimum warn limit is 3!")
+                msg.reply_text("Minimum warn limit chu 3 ani!")
             else:
                 sql.set_warn_limit(chat.id, int(args[0]))
-                msg.reply_text("Updated the warn limit to {}".format(args[0]))
+                msg.reply_text("Warn limit chu {} ah siam that ani".format(args[0]))
                 return (
                     f"<b>{html.escape(chat.title)}:</b>\n"
                     f"#SET_WARN_LIMIT\n"
                     f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-                    f"Set the warn limit to <code>{args[0]}</code>"
+                    f"Warn limit set na chu <code>{args[0]}</code>"
                 )
         else:
             msg.reply_text("Give me a number as an arg!")
     else:
         limit, soft_warn = sql.get_warn_setting(chat.id)
 
-        msg.reply_text("The current warn limit is {}".format(limit))
+        msg.reply_text("Warn limit hman lai mek zat chu {} ani".format(limit))
     return ""
 
 
@@ -429,36 +429,36 @@ def set_warn_strength(update: Update, context: CallbackContext):
     if args:
         if args[0].lower() in ("on", "yes"):
             sql.set_warn_strength(chat.id, False)
-            msg.reply_text("Too many warns will now result in a Ban!")
+            msg.reply_text("Warn nawn reng chu Ban an ni ang!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-                f"Has enabled strong warns. Users will be seriously punched.(banned)"
+                f"Strong warn hman ani. User te ban hmak in ni ang"
             )
 
         elif args[0].lower() in ("off", "no"):
             sql.set_warn_strength(chat.id, True)
             msg.reply_text(
-                "Too many warns will now result in a normal punch! Users will be able to join again after."
+                "Warn nawn reng ngai chu hrem in ni ang, mahse induh chuan inlo join leh thei ang."
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-                f"Has disabled strong punches. I will use normal punch on users."
+                f"Hian trong punch a ti thi rih"
             )
 
         else:
-            msg.reply_text("I only understand on/yes/no/off!")
+            msg.reply_text("Heng ho chiah hi ka hrehiam on/yes/no/off!")
     else:
         limit, soft_warn = sql.get_warn_setting(chat.id)
         if soft_warn:
             msg.reply_text(
-                "Warns are currently set to *punch* users when they exceed the limits.",
+                "Warns hremna hman mek hi *punch* ani.",
                 parse_mode=ParseMode.MARKDOWN,
             )
         else:
             msg.reply_text(
-                "Warns are currently set to *Ban* users when they exceed the limits.",
+                "Warn limit pel chu *Ban* an ni ang.",
                 parse_mode=ParseMode.MARKDOWN,
             )
     return ""
@@ -485,21 +485,21 @@ def __chat_settings__(chat_id, user_id):
     num_warn_filters = sql.num_warn_chat_filters(chat_id)
     limit, soft_warn = sql.get_warn_setting(chat_id)
     return (
-        f"This chat has `{num_warn_filters}` warn filters. "
-        f"It takes `{limit}` warns before the user gets *{'kicked' if soft_warn else 'banned'}*."
+        f"He Group warn filter neih zat chu `{num_warn_filters}` ani. "
+        f"Vawi `{limit}` warning pek an ni ang *{'kicked' if soft_warn else 'banned'}* hma in."
     )
 
 __help__ = """
 
-❂ /warns <userhandle>: get a user's number, and reason, of warns.
-❂ /warnlist: list of all current warning filters
-❂ /warn <userhandle>: warn a user. After 3 warns, the user will be banned from the group. Can also be used as a reply.
-❂ /dwarn <userhandle>: warn a user and delete the message. After 3 warns, the user will be banned from the group. Can also be used as a reply.
-❂ /resetwarn <userhandle>: reset the warns for a user. Can also be used as a reply.
-❂ /addwarn <keyword> <reply message>: set a warning filter on a certain keyword. If you want your keyword to be a sentence, encompass it with quotes, as such: /addwarn "very angry" This is an angry user.
-❂ /nowarn <keyword>: stop a warning filter
-❂ /warnlimit <num>: set the warning limit
-❂ /strongwarn <on/yes/off/no>: If set to on, exceeding the warn limit will result in a ban. Else, will just punch.
+❂ /warns <user>: warning anih zah en na (ID emaw username emaw chat reply in a theih vek).
+❂ /warnlist: Warning na thu en na.
+❂ /warn <user>: Mi warning na (ID emaw username emaw chat reply in a tih theih, chuan warning limit siam loh chuan vawi 3 limit ani e)..
+❂ /dwarn <user>: Mi warning pah a an message delete na. Vawithum aia tam a tih luih chuan Ban ani ang.
+❂ /resetwarn <user>:  Warning sut sak leh na (a tihdan chu warning na nen a in ang).
+❂ /addwarn <Thu> <reply na tur thu>: Automatic a warning tur a siam na ani.
+❂ /nowarn <Thu>: Warning filter tihtawp na.
+❂ /warnlimit <num>: Warning limit set na. Limit an pel chuan Ban ni ang.
+❂ /strongwarn <on/yes/off/no>: Strong warning hi i on chuan i huang chin siam thleng warning tawk chu ban ani ang.
 """
 
 __mod_name__ = "Warning"
