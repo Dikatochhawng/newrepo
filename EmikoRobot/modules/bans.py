@@ -572,11 +572,11 @@ def snipe(update: Update, context: CallbackContext):
 
 
 __help__ = """
-*User Commands:*
+*Members Command hman theih te:*
 
-❂ /kickme*:* kicks the user who issued the command
+❂ /kickme*:* He command hmangtu hi chu Bot in Group atangin a pet chhuak ang.
 
-*Admins only:*
+*Admins Tan Bik:*
 
 ❂ /ban *:* Mi ban na (an message reply emaw username emaw ID hman tur).
 ❂ /sban *:* Midang hriat ve loh tur a mi ban na (ban dan pangai nen a tihdan a in ang)
