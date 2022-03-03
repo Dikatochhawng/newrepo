@@ -111,10 +111,10 @@ def connect_chat(update, context):
                         update.effective_message.from_user.id,
                     )
                 except BadRequest:
-                    send_message(update.effective_message, "Invalid Chat ID!")
+                    send_message(update.effective_message, "*Group ID a diklo*")
                     return
             except BadRequest:
-                send_message(update.effective_message, "Invalid Chat ID!")
+                send_message(update.effective_message, "*Group ID a diklo*")
                 return
 
             isadmin = getstatusadmin.status in ("administrator", "creator")
@@ -255,7 +255,7 @@ def connect_chat(update, context):
         else:
             send_message(
                 update.effective_message,
-                "He Group hi chuconnect phal anilo!",
+                "He Group hi chu connect phal anilo!",
             )
 
 
