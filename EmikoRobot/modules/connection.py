@@ -318,16 +318,14 @@ def connected(bot: Bot, update: Update, chat, user_id, need_admin=True):
 
 
 CONN_HELP = """
- Actions are available with connected groups:
- • View and edit Notes.
- • View and edit Filters.
- • Get invite link of chat.
- • Set and control AntiFlood settings.
- • Set and control Blacklist settings.
- • Set Locks and Unlocks in chat.
- • Enable and Disable commands in chat.
- • Export and Imports of chat backup.
- • More in future!"""
+ Control theih te:
+ • Note en leh edit.
+ • Filter en leh edit.
+ • Invite link lakchhuah.
+ • Anti Flood siam leh tih danglam.
+ • Blacklist siam leh tih danglam.
+ • Lock leh unlock siam.
+ • Command enable leh disable"""
 
 
 def help_connect_chat(update, context):
