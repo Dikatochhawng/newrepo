@@ -165,12 +165,12 @@ def get_id(update: Update, context: CallbackContext):
 
     elif chat.type == "private":
         msg.reply_text(
-            f"*I id chu <code>{chat.id}</code>.ani", parse_mode=ParseMode.HTML,
+            f"**I id chu <code>{chat.id}</code>ani**", parse_mode=ParseMode.HTML,
         )
 
     else:
         msg.reply_text(
-            f"*He group id chu <code>{chat.id}</code>.ani*", parse_mode=ParseMode.HTML,
+            f"**He group id chu <code>{chat.id}</code>ani**", parse_mode=ParseMode.HTML,
         )
 
 
@@ -316,7 +316,7 @@ def info(update: Update, context: CallbackContext):
         text += "\n\nThe Disaster level of this person is 'Soldier'."
         disaster_level_present = True
     elif user.id == 1829047705:
-         text += "\n\nOwner Of A Bot. Queen Of @excrybaby. Bot Name Inspired From 'JoJo'."
+         text += "\n\nOwner Of A Bot. Queen Of @Didiktea. Bot Name Inspired From 'JoJo'."
          disaster_level_present = True
 
     try:
@@ -353,9 +353,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/KennedyProject/44"),
+                                "Health", url="https://t.me/puituflynn"),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/KennedyProject/43")
+                                "Disaster", url="https://t.me/lynnsupportgroup/26")
                         ],
                     ]
                 ),
@@ -371,9 +371,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/KennedyProject/44"),
+                                "Health", url="https://t.me/puituflynn"),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/KennedyProject/43")
+                                "Disaster", url="https://t.me/lynnsupportgroup/26")
                         ],
                     ]
                 ),
