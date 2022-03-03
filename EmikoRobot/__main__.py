@@ -98,8 +98,7 @@ buttons = [
     [
         InlineKeyboardButton(text="Get Help", callback_data="help_back"),
         InlineKeyboardButton(
-            text="📖 Tutorial", url="https://t.me/lynnsupportgroup/26""
-        ),
+            text="📖 Tutorial", url="https://t.me/lynnsupportgroup/26"),
     ],
     [
         InlineKeyboardButton(
