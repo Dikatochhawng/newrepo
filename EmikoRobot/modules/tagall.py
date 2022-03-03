@@ -49,7 +49,7 @@ async def mentionall(event):
         msg = await event.get_reply_message()
         if msg == None:
             return await event.respond(
-                "__Message hluika mention theilo! (Group ka awm hma ami message ho chu)__")
+                "__Message hlui ka mention theilo! (Group ka awm hma ami message ho chu)__")
     else:
         return await event.reply("__Midang mention tur chuan message emaw text emaw reply angai!__")
 
