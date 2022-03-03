@@ -278,7 +278,7 @@ def save(update: Update, context: CallbackContext):
     )
 
     msg.reply_text(
-        f"Yas! Added `{note_name}`.\nGet it with /get `{note_name}`, or `#{note_name}`",
+        f"note ah `{note_name}` tih hi add ani e.\nI kohchhuah duh chuan /get `{note_name}`, emaw `#{note_name}` ti in i kochhuak thei ang",
         parse_mode=ParseMode.MARKDOWN,
     )
 
@@ -320,7 +320,7 @@ def clearall(update: Update, context: CallbackContext):
     member = chat.get_member(user.id)
     if member.status != "creator" and user.id not in DRAGONS:
         update.effective_message.reply_text(
-            "Only the chat owner can clear all notes at once.",
+            "Group siamtu chiah hian a rualin notes te hi a clear thei.",
         )
     else:
         buttons = InlineKeyboardMarkup(
@@ -358,18 +358,18 @@ def clearall_btn(update: Update, context: CallbackContext):
                 return
 
         if member.status == "administrator":
-            query.answer("Only owner of the chat can do this.")
+            query.answer("Group siamtu chiah in he thil hi chu a tithei.")
 
         if member.status == "member":
-            query.answer("You need to be admin to do this.")
+            query.answer("He thil ti tur hi chuan admin i nih angai.")
     elif query.data == "notes_cancel":
         if member.status == "creator" or query.from_user.id in DRAGONS:
             message.edit_text("Clearing of all notes has been cancelled.")
             return
         if member.status == "administrator":
-            query.answer("Only owner of the chat can do this.")
+            query.answer("Group siamtu chiah in he thil hi chu a tithei.")
         if member.status == "member":
-            query.answer("You need to be admin to do this.")
+            query.answer("He thil ti tur hi chuan admin i nih angai.")
 
 
 @connection_status
@@ -377,7 +377,7 @@ def list_notes(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     note_list = sql.get_all_chat_notes(chat_id)
     notes = len(note_list) + 1
-    msg = "Get note by `/notenumber` or `#notename` \n\n  *ID*    *Note* \n"
+    msg = "Note kohchhuah dan `/notenumber` emaw `#notename` \n\n  *ID*    *Note* \n"
     for note_id, note in zip(range(1, notes), note_list):
         if note_id < 10:
             note_name = f"`{note_id:2}.`  `#{(note.name.lower())}`\n"
@@ -543,34 +543,31 @@ def __migrate__(old_chat_id, new_chat_id):
 
 def __chat_settings__(chat_id, user_id):
     notes = sql.get_all_chat_notes(chat_id)
-    return f"There are `{len(notes)}` notes in this chat."
+    return f"Group ah hian `{len(notes)}` notes a awm."
 
 
 __help__ = """
-❂ /get <notename>*:* get the note with this notename
-❂ #<notename>*:* same as /get
-❂ /notes or /saved*:* list all saved notes in this chat
-❂ /number *:* Will pull the note of that number in the list
-If you would like to retrieve the contents of a note without any formatting, use `/get <notename> noformat`. This can \
-be useful when updating a current note
+❂ /get <notename>*:* Note save te kohchhuah na.
+❂ #<notename>*:* /get hman na nen a in ang.
+❂ /notes emaw /saved*:* Note save te en na.
+❂ /number *:* Note number zat hriatna, a number zat hian a kohchhuah theih bawk.
 
-*Admins only:*
-❂ /save <notename> <notedata>*:* saves notedata as a note with name notename
-A button can be added to a note by using standard markdown link syntax - the link should just be prepended with a \
-`buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check `/markdownhelp` for more info
-❂ /save <notename>*:* save the replied message as a note with name notename
- Separate diff replies by `%%%` to get random notes
- *Example:*
+*Admins Tan bik:*
+❂ /save <notename> <notedata>*:* Note save na, note data tih hi thu emaw thlalak, video \
+button vel sawina aw, button siamdan tih vel te hi chu /markdownhelp tih min thawn la i en thei ang.
+❂ /save <notename>*:* He mi hi chu message reply nan a hman tur.
+ Note reply na hi koh chhuahna pakhat ah pakhat aia tam reply na tur a siam theih a, hetiang hian.
+ *Entirnan:*
  `/save notename
  Reply 1
  %%%
  Reply 2
  %%%
  Reply 3`
-❂ /clear <notename>*:* clear note with this name
-❂ /removeallnotes*:* removes all notes from the group
+❂ /clear <notename>*:* note clear na
+❂ /removeallnotes*:* Group a notes awm zawng zawng paih na.
 
- *Note:* Note names are case-insensitive, and they are automatically converted to lowercase before getting saved.
+ *Note:* Note hi Group a thil dahṭhat na'n vel te ṭangkai tak a hman ani ṭhin..
 """
 
 __mod_name__ = "Notes"
