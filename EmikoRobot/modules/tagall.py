@@ -113,7 +113,7 @@ __mod_name__ = "Tag all"
 __help__ = """
 ──「 Mention all func 」──
 
-Lynn hi iGroup ami te mention vek turin a tling tawk.
+Lynn hi i Group ami te mention vek turin a tling tawk.
 
 Tagall hi admin chiahin an hmang thei.  A command dan chu
 
