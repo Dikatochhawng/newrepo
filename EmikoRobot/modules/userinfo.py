@@ -540,36 +540,36 @@ def __user_info__(user_id):
 
 __help__ = """
 *ID:*
-❂ /id*:* get the current group id. If used by replying to a message, gets that user's id.
-❂ /gifid*:* reply to a gif to me to tell you its file ID.
+❂ /id*:* Group emaw mimal id emaw en na.
+❂ /gifid*:* gif id en na.
  
 *Self addded information:* 
-❂ /setme <text>*:* will set your info
-❂ /me*:* will get your or another user's info.
-Examples:
+❂ /setme <text>*:* info set na.
+❂ /me*:* Midang info en na.
+Entirna:
 ❂ /setme I am a wolf.
-❂ /me @username(defaults to yours if no user specified)
+❂ /me @username(midang i mention loh chuan nangmah ani nghal)
  
 *Information others add on you:* 
-❂ /bio*:* will get your or another user's bio. This cannot be set by yourself.
-❂ /setbio <text>*:* while replying, will save another user's bio 
-Examples:
-❂ /bio @username(defaults to yours if not specified).
-❂ /setbio This user is a wolf (reply to the user)
+❂ /bio*:* Nangmah emaw midang bio en na.
+❂ /setbio <text>*:* Midang bio set na. 
+Entirna:
+❂ /bio @username(midang i mention loh chuan nangmah ani nghal).
+❂ /setbio This user is a wolf (midang reply tel tur)
  
 *Overall Information about you:*
-❂ /info*:* get information about a user. 
+❂ /info*:* user information hriatna. 
  
 *json Detailed info:*
-❂ /json*:* Get Detailed info about any message.
+❂ /json*:* message detail hriatna.
  
 *AFk:*
-When marked as AFK, any mentions will be replied to with a message stating that you're not available!
-❂ /afk <reason>*:* Mark yourself as AFK.
-  - brb <reason>: Same as the afk command, but not a command. 
+Group vil hmanlo a i buai dawn a set chi.
+❂ /afk <reason>*:* hei hi i hman chuan group ah tu pawn mention che se la, a chhan i sawi ang in ka lo hrilh hre zel ang..
+  - brb <reason>: /afk nen hian a hman na a in ang. 
   
-*What is that health thingy?*
- Come and see [HP System explained](https://t.me/KennedyProject/44)
+*Android chungchang ah buaina i nei ngai em?*
+ I neih thin chuan Group hi lo join ve ta che [Mizo Android Users](https://t.me/puituflynn)
 """
 
 SET_BIO_HANDLER = DisableAbleCommandHandler("setbio", set_about_bio, run_async=True)
