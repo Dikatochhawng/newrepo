@@ -2,36 +2,35 @@ __mod_name__ = "Tools"
 
 __help__ = """
 *Sangmata Info bot*
-❂ /sg <reply>*:* To check history name
+❂ /sg <reply>*:* history hming enna
 
 *Date-time-Weather*
-❂ /time <country code>*:* Gives information about a timezone.
-❂ /weather <city>*:* Get weather info in a particular place.
-❂ /wttr <city>*:* Advanced weather module, usage same as /weather
-❂ /wttr moon*:* Get the current status of moon
+❂ /weather <khawpui hming>*:*I  khawpui type lai khaw cbin en na.
+❂ /wttr <city>*:* /weather nen a in ang.
+❂ /wttr moon*:* Thla chungchang hriatna.
 
 *Converts*
-❂ /encrypt*:* Encrypts The Given Text
-❂ /decrypt*:* Decrypts Previously Ecrypted Text
-❂ /zip*:* reply to a telegram file to compress it in .zip format
-❂ /unzip*:* reply to a telegram file to decompress it from the .zip format
+❂ /encrypt*:* Thu Encrypt na
+❂ /decrypt*:* Ecrypted Text Decrypt na
+❂ /zip*:* Telegram zip file compress na
+❂ /unzip*:* Telegram zip file decompress na
 
 *Random API*
-❂ /ptl or /asupan: get random video from Instagram timeline
-❂ /chika: get random video from chikakiku
-❂ /wibu:get random short anime video or photos
-❂ /truth: challenge 
-❂ /dare: challenge
+❂ /ptl or /asupan: Instagram timeline atang a video lakna
+❂ /chika: chikakiku atanga video lakna
+❂ /wibu:Anime video tawi emaw thlalak lak na
+❂ /truth: cho na 
+❂ /dare: cho na
 Link To File:
-❂ /up: reply to a direct download link to upload it to telegram as files
+❂ /up: direct download link to upload it to telegram as files
  
  File To Link:
-❂ /transfersh: reply to a telegram file to upload it on transfersh and get direct download link
-❂ /tmpninja: reply to a telegram file to upload it on tmpninja and get direct download link
- File Or Text To Telegraph:
-❂ /tgm : Get Telegraph Link Of Replied Media
-❂ /tgt: Get Telegraph Link of Replied Text
+❂ /transfersh: Telegram file reply  transfersh download link upload na
+❂ /tmpninja: Telegram file reply aa tmpninja download link upload na
+ File emaw Text Telegraph link siamna command:
+❂ /tgm : Media reply Telegraph Link a siam na
+❂ /tgt: Message reply Telegraph Link a siam na
 
  Tagger
-❂ /tagall : for tag everyone at least 100 member first.
+❂ /tagall : member te a rual a tag na.
 """
