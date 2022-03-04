@@ -380,7 +380,7 @@ def emiko_about_callback(update, context):
                     InlineKeyboardButton(text="Credits", callback_data="emiko_credit"),
                  ],
                  [
-                    InlineKeyboardButton(text="Source Code", url="https://github.com/Didiktea9/lynn"),
+                    InlineKeyboardButton(text="Mizo Android Users", url="https://t.me/puituflynn"),
                  ],
                  [
                     InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="emiko_back"),
@@ -517,12 +517,12 @@ def get_help(update: Update, context: CallbackContext):
         if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
             module = args[1].lower()
             update.effective_message.reply_text(
-                f"Private ah  {module.capitalize()} i hriat duh chuan minlo be rawh",
+                f"{module.capitalize()} hman dan i hriat duh chuan Min hmet rawh tih khu hmet la, start tih kha i hmet leh dawn nia",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="Help",
+                                text="Min Hmet Rawh",
                                 url="t.me/{}?start=ghelp_{}".format(
                                     context.bot.username, module
                                 ),
