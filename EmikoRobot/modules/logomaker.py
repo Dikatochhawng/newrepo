@@ -127,7 +127,7 @@ async def logo_gen(event):
 
 @register(pattern="^/wlogo ?(.*)")
 async def logo_(event):
-    xx = await event.reply("`Preparing your logo...`")
+    xx = await event.reply("`I logo tur buatsaih mek ani e...`")
     name = event.pattern_match.group(1)
     if not name:
         await xx.edit("`Thuziak tallo dah la!\nEntirnan: /wlogo <i hming>!`")
@@ -191,7 +191,7 @@ async def logo_(event):
               stroke_width=strke, stroke_fill="black")
     flnme = f"logo.png"
     img.save(flnme, "png")
-    await xx.edit("`Uploading`")
+    await xx.edit("`Upload mek e`")
     if os.path.exists(flnme):
         await tbot.send_file(
             event.chat_id,
