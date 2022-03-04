@@ -285,10 +285,10 @@ def save(update: Update, context: CallbackContext):
     if msg.reply_to_message and msg.reply_to_message.from_user.is_bot:
         if text:
             msg.reply_text(
-                "Seems like you're trying to save a message from a bot. Unfortunately, "
-                "bots can't forward bot messages, so I can't save the exact message. "
-                "\nI'll save all the text I can, but if you want more, you'll have to "
-                "forward the message yourself, and then save it.",
+                "Bot atangin message save i tum anih hmel, "
+                "Bot hian bot vek message a save theilo. "
+                "\nA theih chin save kan tum ange "
+                "mahse nangmah ngeiin forward tawh la aw.",
             )
         else:
             msg.reply_text(
