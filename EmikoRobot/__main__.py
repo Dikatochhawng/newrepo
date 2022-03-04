@@ -227,7 +227,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            f"👋 Chibai, Kei hi {dispatcher.bot.first_name} ka ni a. I Group ah min Add ve la aw.",
+            f"<b>👋 Chibai, Kei hi {dispatcher.bot.first_name} ka ni a. I Group ah min Add avangin ka lawm e.<\b>",
             parse_mode=ParseMode.HTML
        )
 
