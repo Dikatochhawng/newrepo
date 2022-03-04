@@ -517,7 +517,7 @@ def get_help(update: Update, context: CallbackContext):
         if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
             module = args[1].lower()
             update.effective_message.reply_text(
-                f"{module.capitalize()} hman dan i hriat duh chuan Min hmet rawh tih khu hmet la, start tih kha i hmet leh dawn nia",
+                f"{module.capitalize()} hman dan i hriat duh chuan *Min hmet rawh* tih khu hmet la, *start* tih kha i hmet leh dawn nia",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
