@@ -335,7 +335,7 @@ def clearall(update: Update, context: CallbackContext):
             ],
         )
         update.effective_message.reply_text(
-            f"Are you sure you would like to clear ALL notes in {chat.title}? This action cannot be undone.",
+            f"{chat.title} a note te hi i clear duh tak tak maw,a cancel theih tawhloh ania.",
             reply_markup=buttons,
             parse_mode=ParseMode.MARKDOWN,
         )
