@@ -390,9 +390,9 @@ def list_notes(update: Update, context: CallbackContext):
 
     if not note_list:
         try:
-            update.effective_message.reply_text("<b>Note save lai a awm lo<\b>")
+            update.effective_message.reply_text("Note save lai a awm lo")
         except BadRequest:
-            update.effective_message.reply_text("<b>Note save lai a awm lo<\b>", quote=False)
+            update.effective_message.reply_text("Note save lai a awm lo", quote=False)
 
     elif len(msg) != 0:
         update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
