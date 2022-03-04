@@ -3,7 +3,7 @@ from EmikoRobot import pbot
 
 
 @pbot.on_message(filters.command("snd"))
-async def send(_, message):
+async def send(client, message):
   rsr = message.text.split(None, 1)[1]
-  await app.send_message(message.chat.id, text=rsr, disable_web_page_preview=True)
+  await client.send_message(message.chat.id, text=rsr, disable_web_page_preview=True)
   await message.delete()
