@@ -253,7 +253,7 @@ def slash_get(update: Update, context: CallbackContext):
         note_name = str(noteid).strip(">").split()[1]
         get(update, context, note_name, show_none=False)
     except IndexError:
-        update.effective_message.reply_text("Wrong Note ID 😾")
+        update.effective_message.reply_text("<b> Note ID a diklo<\b>")
 
 
 @user_admin
@@ -278,7 +278,7 @@ def save(update: Update, context: CallbackContext):
     )
 
     msg.reply_text(
-        f"note ah `{note_name}` tih hi add ani e.\nI kohchhuah duh chuan /get `{note_name}`, emaw `#{note_name}` ti in i kochhuak thei ang",
+        f"<b>note ah `{note_name}` tih hi add ani e.\nI kohchhuah duh chuan /get `{note_name}`, emaw `#{note_name}` ti in i kochhuak thei ang</b>",
         parse_mode=ParseMode.MARKDOWN,
     )
 
@@ -309,7 +309,7 @@ def clear(update: Update, context: CallbackContext):
         notename = args[0].lower()
 
         if sql.rm_note(chat_id, notename):
-            update.effective_message.reply_text("Successfully removed note.")
+            update.effective_message.reply_text("<b>note remove ani.<\b>")
         else:
             update.effective_message.reply_text("That's not a note in my database!")
 
@@ -377,7 +377,7 @@ def list_notes(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     note_list = sql.get_all_chat_notes(chat_id)
     notes = len(note_list) + 1
-    msg = "<b>Note i kohchhuah duh chuan `/notenumber` emaw `#note hming` emaw khian i kochhuak thei ang. / leh # khi a command na aw<\b>.\n\n *ID*    *Note* \n"
+    msg = "<b>Note i kohchhuah duh chuan `/notenumber` emaw `#note hming` emaw khian i kochhuak thei ang. / leh # khi a command na aw<\b>"."\n\n *ID*    *Note* \n"
     for note_id, note in zip(range(1, notes), note_list):
         if note_id < 10:
             note_name = f"`{note_id:2}.`  `#{(note.name.lower())}`\n"
