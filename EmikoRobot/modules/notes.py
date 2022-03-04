@@ -377,7 +377,7 @@ def list_notes(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     note_list = sql.get_all_chat_notes(chat_id)
     notes = len(note_list) + 1
-    msg = "Note i kohchhuah duh chuan `/notenumber` emaw `#note hming` emaw khitiang khian i kochhuak thei ang./ leh # khi a command na aw.\n\n  *ID*    *Note* \n"
+    msg = "<b>Note i kohchhuah duh chuan `/notenumber` emaw `#note hming` emaw khian i kochhuak thei ang. / leh # khi a command na aw<\b>.\n\n *ID*    *Note* \n"
     for note_id, note in zip(range(1, notes), note_list):
         if note_id < 10:
             note_name = f"`{note_id:2}.`  `#{(note.name.lower())}`\n"
@@ -390,9 +390,9 @@ def list_notes(update: Update, context: CallbackContext):
 
     if not note_list:
         try:
-            update.effective_message.reply_text("No notes in this chat!")
+            update.effective_message.reply_text("<b>Note save lai a awm lo<\b>")
         except BadRequest:
-            update.effective_message.reply_text("No notes in this chat!", quote=False)
+            update.effective_message.reply_text("<b>Note save lai a awm lo<\b>", quote=False)
 
     elif len(msg) != 0:
         update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
