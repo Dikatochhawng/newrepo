@@ -197,11 +197,6 @@ __help__ = """
       _OR_
  `/cash 1 usd inr`
  Output: `1.0 USD = 75.505 INR`
-
-*Music Modules:*
-❂ /song emaw /music (hla hming) : Command zawh a hla hming i dah in youtube ami hla i download thei ang(hla hming aiah youtube link pawh a hman theih).
-❂ /video emaw /vsong(hla hming) : Command zawh a hla hming i dah in youtube ami video i download thei ang(hla hming aiah youtube link pawh a hman theih).
-❂ /lyrics (hla hming) : Command zawh a hla hming i dah in a lyrics ka pe ang che.
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler(
