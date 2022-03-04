@@ -278,7 +278,7 @@ def save(update: Update, context: CallbackContext):
     )
 
     msg.reply_text(
-        f"<b>note ah `{note_name}` tih hi add ani e.\nI kohchhuah duh chuan /get `{note_name}`, emaw `#{note_name}` ti in i kochhuak thei ang</b>",
+        f"note ah `{note_name}` tih hi add ani e.\nI kohchhuah duh chuan /get `{note_name}`, emaw `#{note_name}` ti in i kochhuak thei ang",
         parse_mode=ParseMode.MARKDOWN,
     )
 
