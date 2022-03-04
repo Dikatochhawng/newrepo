@@ -212,8 +212,8 @@ __mod_name__ = "Logomaker"
 
 __help__ = """ Logomaker hmandan
 
-❂ /logo <text/hming> - Logo siana.
-❂ /wlogo <text/hming> - Wide view a logo siamna.
+❂ /logo <text/hming> - Logo siam na.
+❂ /wlogo <text/hming> - Wide view a logo siam na.
 
  Image Editor :
 
