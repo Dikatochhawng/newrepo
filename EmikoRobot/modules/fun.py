@@ -313,20 +313,19 @@ def weebify(update: Update, context: CallbackContext):
 
 
 __help__ = """
-❂ /runs*:* reply a random string from an array of replies
-❂ /slap*:* slap a user, or get slapped if not a reply
-❂ /shrug*:* get shrug XD
-❂ /table*:* get flip/unflip :v
-❂ /decide*:* Randomly answers yes/no/maybe
-❂ /toss*:* Tosses A coin
-❂ /bluetext*:* check urself :V
-❂ /roll*:* Roll a dice
-❂ /rlg*:* Join ears,nose,mouth and create an emo ;-;
-❂ /shout <keyword>*:* write anything you want to give loud shout
-❂ /weebify <text>*:* returns a weebified text
-❂ /sanitize*:* always use this before /pat or any contact
-❂ /pat*:* pats a user, or get patted
-❂ /8ball*:* predicts using 8ball method
+❂ /runs*:* games
+❂ /slap*:* member slap na, an reply loh che chuan nangmah i in slap ang
+❂ /shrug*:* games
+❂ /table*:* games
+❂ /decide*:* chhanna awmsa yes/no/maybe
+❂ /toss*:* games
+❂ /bluetext*:* nangman han test ve teh
+❂ /roll*:* games
+❂ /rlg*:* mit,beng,hnar emo siam na ;-;
+❂ /shout <keyword>*:* member te hmuh vek tur a thu thu ziahna
+❂ /sanitize*:* games
+❂ /pat*:* games
+❂ /8ball*:* games
 
 - Animation
 ❂ /love 
@@ -334,18 +333,18 @@ __help__ = """
 ❂ /bombs 
 
 - Shippering
-❂ /couples - get couples of today
+❂ /couples - Group a inkawp remnber zawnna
 
-- Here is the help for the Styletext module:
+- Styletext module hman dan:
 
-❂ /weebify <text>: weebify your text!
-❂ /bubble <text>: bubble your text!
-❂ /fbubble <text>: bubble-filled your text!
-❂ /square <text>: square your text!
-❂ /fsquare <text>: square-filled your text!
-❂ /blue <text>: bluify your text!
-❂ /latin <text>: latinify your text!
-❂ /lined <text>: lined your text!
+❂ /weebify <text>: i thil ziah weebify a dah na!
+❂ /bubble <text>: i thil ziah bubble a dah na!
+❂ /fbubble <text>: i thil ziah bubble a fill na!
+❂ /square <text>: i thil ziah square a dah na!
+❂ /fsquare <text>: i thil ziah square a fill na!
+❂ /blue <text>: i thil ziah tih pawl na!
+❂ /latin <text>: i thil ziah latin a dah na!
+❂ /lined <text>: i thil ziah line na!
 """
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
