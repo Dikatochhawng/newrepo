@@ -82,21 +82,22 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Chibai {} !*
- Kei hi i Group enkawl tur a duhtaka Didiktea siam ka ni.
-────────────────────────
-× *Uptime:* `{}`
-× `{}` *users, across* `{}` *chats.*
-────────────────────────
+Chibai le hmelthate🥰, Kei hi *Lynn chawngthu* ka ni a, 』
+I group enkawl pui tur che a duhtaka *Didiktea* siam ka ni!
+ 
+`A hnuai a` *📚 Commands* `button khu hmet la ka thil tihtheih te i hre dawn nia.
+Anihloh pawh in` *📖 Tutorial* `tih khu hmet la,min hman dan tur te i hre thei bawk ang.`
 *❍ Kan Sakruang Mizoram Tan❍*
 """
 
 buttons = [
     [
         InlineKeyboardButton(text="Min Hmet Suh ", callback_data="emiko_"),
+        InlineKeyboardButton(text="📚 Commands", callback_data="help_back"),
     ],
     [
-        InlineKeyboardButton(text="Get Help", callback_data="help_back"),
+        InlineKeyboardButton(
+            text="💬 GROUP", url="https://t.me/puituflynn"),
         InlineKeyboardButton(
             text="📖 Tutorial", url="https://t.me/lynnsupportgroup/26"),
     ],
