@@ -84,8 +84,8 @@ DLYNN = "https://telegra.ph/file/13bfc9bb06beb9bb38df6.jpg"
 
 
 PM_START_TEXT = """
-『Chibai le hmelthate🥰, Kei hi *Lynn chawngthu* ka ni a, 』
-I group enkawl pui tur che a duhtaka *Didiktea* siam ka ni!
+『Chibai le hmelthate🥰, Kei hi *Lynn* ka ni a,
+I group enkawl pui tur che a duhtaka *Didiktea* siam ka ni!』
  
 `A hnuai a` *📚 Commands* `button khu hmet la ka thil tihtheih te i hre dawn nia.
 Anihloh pawh in` *📖 Tutorial* `tih khu hmet la,min hman dan tur te i hre thei bawk ang.`
