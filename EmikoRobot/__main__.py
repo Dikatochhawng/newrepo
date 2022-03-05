@@ -80,6 +80,8 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
+DLYNN = "https://telegra.ph/file/13bfc9bb06beb9bb38df6.jpg"
+
 
 PM_START_TEXT = """
 『Chibai le hmelthate🥰, Kei hi *Lynn chawngthu* ka ni a, 』
@@ -225,13 +227,34 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-                disable_web_page_preview=False,
             )
     else:
-        update.effective_message.reply_text(
-            f"<b>👋 Chibai, Kei hi {dispatcher.bot.first_name} ka ni a. I Group ah min Add avangin ka lawm e.<\b>",
-            parse_mode=ParseMode.HTML
-       )
+            update.effective_message.reply_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+            )
+    else:
+        update.effective_message.reply_photo(
+            DLYNN, caption= "<b>In tan Lynn ka awm reng e</b>",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            text="Support Group",
+                            url="https://t.me/lynnsupportgroup",
+                        ),
+                        InlineKeyboardButton(
+                            text="Android Users",
+                            url="https://t.me/puituflynn",
+                        ),
+                    ],
+                ]
+             ),
+         )
+        
 
 
 def error_handler(update, context):
