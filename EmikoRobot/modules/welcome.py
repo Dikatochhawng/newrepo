@@ -231,73 +231,79 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                 )
                 continue
 
-            # Welcome WOLVES
-            if new_mem.id in WOLVES:
+            # Welcome yourself
+            elif new_mem.id == bot.id:
+                update.effective_message.reply_text("I Group ah min add avangin ka lawm e...\n\nAdmin ah min dah la buaina i neih loh nan @lynnsupportgroup hi join bawk la aw.")
+                if creator:
+                    bot.send_message(
+                        JOIN_LOGGER,
+                        "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>\n<b>Creator:</b> <code>{}</code>"
+                        .format(
+                            html.escape(chat.title), chat.id,
+                            html.escape(creator)),
+                        parse_mode=ParseMode.HTML)
+                else:
+                    bot.send_message(
+                        JOIN_LOGGER,
+                        "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>"
+                        .format(html.escape(chat.title), chat.id),
+                        parse_mode=ParseMode.HTML)
                 update.effective_message.reply_text(
-                    "Oof! A Soldier Users just joined!", reply_to_message_id=reply
-                )
+                    "Watashi ga kita!", reply_to_message_id=reply)
                 continue
 
-            buttons = sql.get_welc_buttons(chat.id)
-            keyb = build_keyboard(buttons)
+            else:
+                buttons = sql.get_welc_buttons(chat.id)
+                keyb = build_keyboard(buttons)
 
-            if welc_type not in (sql.Types.TEXT, sql.Types.BUTTON_TEXT):
-                media_wel = True
+                if welc_type not in (sql.Types.TEXT, sql.Types.BUTTON_TEXT):
+                    media_wel = True
 
-            first_name = (
-                new_mem.first_name or "PersonWithNoName"
-            )  # edge case of empty name - occurs for some bugs.
+                first_name = (
+                    new_mem.first_name or "PersonWithNoName"
+                )  # edge case of empty name - occurs for some bugs.
 
-            if MessageHandlerChecker.check_user(update.effective_user.id):
-                return
+                if cust_welcome:
+                    if cust_welcome == sql.DEFAULT_WELCOME:
+                        cust_welcome = random.choice(
+                            sql.DEFAULT_WELCOME_MESSAGES).format(
+                                first=escape_markdown(first_name))
 
-            if cust_welcome:
-                if "%%%" in cust_welcome:
-                    split = cust_welcome.split("%%%")
-                    text = random.choice(split) if all(split) else cust_welcome
-                else:
-                    text = cust_welcome
+                    if new_mem.last_name:
+                        fullname = escape_markdown(
+                            f"{first_name} {new_mem.last_name}")
+                    else:
+                        fullname = escape_markdown(first_name)
+                    count = chat.get_members_count()
+                    mention = mention_markdown(new_mem.id,
+                                               escape_markdown(first_name))
+                    if new_mem.username:
+                        username = "@" + escape_markdown(new_mem.username)
+                    else:
+                        username = mention
 
-                if cust_welcome == sql.DEFAULT_WELCOME_MESSAGES:
-                    cust_welcome = random.choice(sql.DEFAULT_WELCOME_MESSAGES).format(
-                        first=escape_markdown(first_name)
+                    valid_format = escape_invalid_curly_brackets(
+                        cust_welcome, VALID_WELCOME_FORMATTERS)
+                    res = valid_format.format(
+                        first=escape_markdown(first_name),
+                        last=escape_markdown(new_mem.last_name or first_name),
+                        fullname=escape_markdown(fullname),
+                        username=username,
+                        mention=mention,
+                        count=count,
+                        chatname=escape_markdown(chat.title),
+                        id=new_mem.id,
                     )
 
-                if new_mem.last_name:
-                    fullname = escape_markdown(f"{first_name} {new_mem.last_name}")
                 else:
-                    fullname = escape_markdown(first_name)
-                count = chat.get_member_count()
-                mention = mention_markdown(new_mem.id, escape_markdown(first_name))
-                if new_mem.username:
-                    username = "@" + escape_markdown(new_mem.username)
-                else:
-                    username = mention
+                    res = random.choice(sql.DEFAULT_WELCOME_MESSAGES).format(
+                        first=escape_markdown(first_name))
+                    keyb = []
 
-                valid_format = escape_invalid_curly_brackets(
-                    text, VALID_WELCOME_FORMATTERS
-                )
-                res = valid_format.format(
-                    first=escape_markdown(first_name),
-                    last=escape_markdown(new_mem.last_name or first_name),
-                    fullname=escape_markdown(fullname),
-                    username=username,
-                    mention=mention,
-                    count=count,
-                    chatname=escape_markdown(chat.title),
-                    id=new_mem.id,
-                )
-
-            else:
-                res = random.choice(sql.DEFAULT_WELCOME_MESSAGES).format(
-                    first=escape_markdown(first_name)
-                )
-                keyb = []
-
-            backup_message = random.choice(sql.DEFAULT_WELCOME_MESSAGES).format(
-                first=escape_markdown(first_name)
-            )
-            keyboard = InlineKeyboardMarkup(keyb)
+                backup_message = random.choice(
+                    sql.DEFAULT_WELCOME_MESSAGES).format(
+                        first=escape_markdown(first_name))
+                keyboard = InlineKeyboardMarkup(keyb)
 
         else:
             welcome_bool = False
