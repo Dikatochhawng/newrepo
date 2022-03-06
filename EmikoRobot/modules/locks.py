@@ -158,18 +158,18 @@ def lock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "{} hi admin lo zawng tan {} ah hian lock ani!".format(ltype, chat_name)
+                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(ltype, chat_name)
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
                             update.effective_message,
-                            "He command hi chu Group ah chiah a hman theih",
+                            "This command is meant to use in group not in PM",
                         )
                         return ""
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = "{} hi admin lo zawng tan {} ah hian lock ani!".format(ltype)
+                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(ltype)
                 sql.update_lock(chat.id, ltype, locked=True)
                 send_message(update.effective_message, text, parse_mode="markdown")
 
@@ -191,20 +191,20 @@ def lock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "{} hi admin lo zawng tan {} ah hian lock ani!".format(
+                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(
                         ltype, chat_name
                     )
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
                             update.effective_message,
-                            "He command hi chu Group ah chiah a hman theih",
+                            "This command is meant to use in group not in PM",
                         )
                         return ""
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = "Locked {} for all non-admins!".format(ltype)
+                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(ltype)
 
                 current_permission = context.bot.getChat(chat_id).permissions
                 context.bot.set_chat_permissions(
@@ -228,15 +228,15 @@ def lock(update, context) -> str:
                 )
             send_message(
                 update.effective_message,
-                "Engthil nge lock i tum...? Lock theih te chu /locktypes ah khan en rawh",
+                "Enge lock i tum...? Lock theih te i hriat duh chuan /locktypes tih lo thawn rawh",
             )
         else:
-            send_message(update.effective_message, "Engthil nge lock i tum...?")
+            send_message(update.effective_message, "Enge unlock i tum...?")
 
     else:
         send_message(
             update.effective_message,
-            "Admin ah min dahlo emaw he thil tihtheih na rights hi min pelo ani ang.",
+            "Admin ah min dahlo emaw he thil tihtheihna right hi min pe lo ani ang.",
         )
 
     return ""
@@ -260,18 +260,18 @@ def unlock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "He{} hi {} ami te tan unlock ani!".format(ltype, chat_name)
+                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(ltype, chat_name)
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
                             update.effective_message,
-                            "He command hi chu Group a hman tur ania",
+                            "This command is meant to use in group not in PM",
                         )
                         return ""
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = "Unlocked {} for everyone!".format(ltype)
+                    text = "{} hi unlock ani e!".format(ltype)
                 sql.update_lock(chat.id, ltype, locked=False)
                 send_message(update.effective_message, text, parse_mode="markdown")
                 return (
@@ -292,18 +292,18 @@ def unlock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "{} hi {} ani tetan unlock ani!".format(ltype, chat_name)
+                    text = "Admin lo tan {} tih hi {} ah unlock ani e!".format(ltype, chat_name)
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
                             update.effective_message,
-                            "He command hi chu Group ah chiah a hman theih",
+                            "This command is meant to use in group not in PM",
                         )
                         return ""
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = "Unlocked {} for everyone!".format(ltype)
+                    text = "{} hiinlock a ni e!".format(ltype)
 
                 current_permission = context.bot.getChat(chat_id).permissions
                 context.bot.set_chat_permissions(
@@ -328,11 +328,11 @@ def unlock(update, context) -> str:
                 )
             send_message(
                 update.effective_message,
-                "Engthil nge unlock i tum...? Lock theih te chu /locktypes ah khan en rawh.",
+                "Enge unlock i tum...? Lock theih te i hriat duh chuan /locktypes tih lo thawn rawh.",
             )
 
         else:
-            send_message(update.effective_message, "Engthil nge unlock i tum...?")
+            send_message(update.effective_message, "Enge i unlock duh...?")
 
     return ""
 
@@ -406,15 +406,15 @@ def del_lockables(update, context):
                         if not is_bot_admin(chat, context.bot.id):
                             send_message(
                                 update.effective_message,
-                                "Bot dang ka hmu a mahse join lo turin ka dang theilo..."
-                                "Admin ka nilo tlat!",
+                                "I see a bot and I've been told to stop them from joining..."
+                                "but I'm not admin!",
                             )
                             return
 
                         chat.ban_member(new_mem.id)
                         send_message(
                             update.effective_message,
-                            "Admin te chauh in Bot an add thei.",
+                            "Kal mai teh, Admin chiah in group ah hian Bot an add thei.",
                         )
                         break
             else:
@@ -467,7 +467,7 @@ def build_lock_message(chat_id):
         # Building lock list string
         for x in locklist:
             res += "\n × {}".format(x)
-    res += "\n\n*" + "Heng te hi Group permissions te chu anni:" + "*"
+    res += "\n\n*" + "These are the current chat permissions:" + "*"
     for x in permslist:
         res += "\n × {}".format(x)
     return res
@@ -488,7 +488,7 @@ def list_locks(update, context):
         if update.effective_message.chat.type == "private":
             send_message(
                 update.effective_message,
-                "Hecommand hi chu Group hman tur bik ania",
+                "This command is meant to use in group not in PM",
             )
             return ""
         chat = update.effective_chat
