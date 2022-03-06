@@ -158,7 +158,7 @@ def lock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(ltype, chat_name)
+                    text = "Admin lo tan {} te {} ah hian lock ani e!".format(ltype, chat_name)
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
@@ -191,7 +191,7 @@ def lock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(
+                    text = "Admin lo tan {} te {} ah hian lock ani e!".format(
                         ltype, chat_name
                     )
                 else:
@@ -204,7 +204,7 @@ def lock(update, context) -> str:
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(ltype)
+                    text = "Admin lo tan {} te {} ah hian lock ani e!".format(ltype)
 
                 current_permission = context.bot.getChat(chat_id).permissions
                 context.bot.set_chat_permissions(
@@ -260,7 +260,7 @@ def unlock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(ltype, chat_name)
+                    text = "Admin lo tan {} te {} ah hian lock ani e!".format(ltype, chat_name)
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
@@ -292,7 +292,7 @@ def unlock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = "Admin lo tan {} tih hi {} ah unlock ani e!".format(ltype, chat_name)
+                    text = "Admin lo tan {} te {} ah hian unlock ani e!".format(ltype, chat_name)
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
@@ -303,7 +303,7 @@ def unlock(update, context) -> str:
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = "{} hiinlock a ni e!".format(ltype)
+                    text = "{} hi unlock a ni e!".format(ltype)
 
                 current_permission = context.bot.getChat(chat_id).permissions
                 context.bot.set_chat_permissions(
