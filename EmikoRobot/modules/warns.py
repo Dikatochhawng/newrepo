@@ -298,7 +298,7 @@ def add_warn_filter(update: Update, context: CallbackContext):
 
     sql.add_warn_filter(chat.id, keyword, content)
 
-    update.effective_message.reply_text(f"Warn handler added for '{keyword}'!")
+    update.effective_message.reply_text(f"Group ah hian '{keyword}' tih hi warn admin lo tan block ani e!")
     raise DispatcherHandlerStop
 
 
