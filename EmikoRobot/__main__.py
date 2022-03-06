@@ -473,7 +473,7 @@ def emiko_about_callback(update, context):
                 [
                  [
                     InlineKeyboardButton(text="DIDIKTEA", url="https://t.me/Didiktea"),
-                    InlineKeyboardButton(text="RSR-TG-INFO", url="https://t.me/rsrmusic"),
+                    InlineKeyboardButton(text="RSR", url="https://t.me/rsrmusic"),
                  ],
                  [
                     InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="emiko_"),
