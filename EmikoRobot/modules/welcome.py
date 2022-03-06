@@ -263,7 +263,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                     new_mem.first_name or "PersonWithNoName"
                 )  # edge case of empty name - occurs for some bugs.
 
-                if cust_welcome:
+            if cust_welcome:
                 if "%%%" in cust_welcome:
                     split = cust_welcome.split("%%%")
                     text = random.choice(split) if all(split) else cust_welcome
