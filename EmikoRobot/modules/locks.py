@@ -169,7 +169,7 @@ def lock(update, context) -> str:
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(ltype)
+                    text = "Admin lo tan {} tih hi {} ah lock ani e!".format(ltype, chat_name)
                 sql.update_lock(chat.id, ltype, locked=True)
                 send_message(update.effective_message, text, parse_mode="markdown")
 
