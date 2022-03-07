@@ -253,7 +253,7 @@ def slash_get(update: Update, context: CallbackContext):
         note_name = str(noteid).strip(">").split()[1]
         get(update, context, note_name, show_none=False)
     except IndexError:
-        update.effective_message.reply_text("<b> Note ID a diklo<\b>")
+        update.effective_message.reply_text("Note ID a diklo")
 
 
 @user_admin
@@ -309,7 +309,7 @@ def clear(update: Update, context: CallbackContext):
         notename = args[0].lower()
 
         if sql.rm_note(chat_id, notename):
-            update.effective_message.reply_text("<b>note remove ani.<\b>")
+            update.effective_message.reply_text("note remove ani.")
         else:
             update.effective_message.reply_text("That's not a note in my database!")
 
