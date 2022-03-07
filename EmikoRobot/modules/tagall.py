@@ -118,5 +118,5 @@ Lynn hi i Group ami te mention vek turin a tling tawk.
 Tagall hi admin chiahin an hmang thei.  A command dan chu
 
 ❂ /tagall emaw @all (message reply emaw thu thar pawh a hman theih) kimlo awm miahlo in Group amite a rualin a mention vek thei.
-❂ /cancel hi chu the mention-all i tih cancel na ani.
+❂ /cancel hi chu mention-all i tih cancel na ani.
 """
