@@ -429,7 +429,7 @@ def emiko_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="emiko_")]]
+                [[InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="emiko_")]]
             ),
         )
 
@@ -441,7 +441,7 @@ def emiko_about_callback(update, context):
             f"\n\nFilter leh note hi Button tel pawn a set theih bawk ang.",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="emiko_")]]
+                [[InlineKeyboardButton(text="「🔙 GO BACK 」", callback_data="emiko_")]]
             ),
         )
     elif query.data == "emiko_support":
