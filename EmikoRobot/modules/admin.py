@@ -778,6 +778,8 @@ def adminlist(update, context):
     administrators = bot.getChatAdministrators(chat_id)
     text = "<b>{}</b> Admin te chu:".format(html.escape(update.effective_chat.title))
 
+    bot_admin_list = []
+
     for admin in administrators:
         user = admin.user
         status = admin.status
