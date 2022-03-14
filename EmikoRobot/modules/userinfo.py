@@ -165,12 +165,12 @@ def get_id(update: Update, context: CallbackContext):
 
     elif chat.type == "private":
         msg.reply_text(
-            f"<b>I id chu <code>{chat.id}</code>ani</b>", parse_mode=ParseMode.HTML,
+            f"<b>I id chu <code>{chat.id}</code> ani.</b>", parse_mode=ParseMode.HTML,
         )
 
     else:
         msg.reply_text(
-            f"<b>He group id chu <code>{chat.id}</code>ani</b>", parse_mode=ParseMode.HTML,
+            f"<b>He group id chu <code>{chat.id}</code> ani.</b>", parse_mode=ParseMode.HTML,
         )
 
 
@@ -447,7 +447,7 @@ def set_about_me(update: Update, context: CallbackContext):
 def stats(update: Update, context: CallbackContext):
     stats = "<b>╔═━「 Current Lynn Statistics 」</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
-    result += "\n<b>╘═━「 Powered By Didiktea 」</b>"
+    result += "\n<b>╘═━「 Bot Siamtu hi Didiktea ani 」</b>"
     update.effective_message.reply_text(
         result,
         parse_mode=ParseMode.HTML, 
