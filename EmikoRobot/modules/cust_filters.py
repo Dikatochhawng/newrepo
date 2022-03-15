@@ -609,8 +609,7 @@ def __chat_settings__(chat_id, user_id):
 __help__ = """
 ❂ /filters*:* Filter dahṭhat en na.
 *Admin Tan Bik:*
-❂ /filter (koh chhuahna tur) (reply na tur)*:* Filter koh chhuahna tur a i siam leh reply na tur a i siam ang khan message an rawn thawn veleh ka reply ang.. /nNOTE: Reply na tur hi a koh chhuahna pakhat ah hian chi hrang hrang a reply tur in a tih theih a,a hnuai a hi a tihdan. Entirnan: /filter "chibai" enge i an \
-doin?
+❂ /filter (koh chhuahna tur) (reply na tur)*:* Filter koh chhuahna tur a i siam leh reply na tur a i siam ang khan message an rawn thawn veleh ka reply ang..NOTE: Reply na tur hi a koh chhuahna pakhat ah hian chi hrang hrang a reply tur in a tih theih a,a hnuai a hi a tihdan. Entirnan: /filter "chibai" chibai le!
  Hetiang then hran hian `%%%` reply hran theuh a nei
  *Entirnan:* 
  `/filter "filter hming"
