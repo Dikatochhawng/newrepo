@@ -113,14 +113,15 @@ def warn(user: User,
     else:
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
-                "❌ Remove", callback_data="rm_warn({})".format(user.id))
+                "🔘 Remove Warn", callback_data="rm_warn({})".format(user.id))
         ]])
 
         reply = (
-            f"{mention_html(user.id, user.first_name)} [<code>{user.id}</code>]"
-            f" Warned ({num_warns} of {limit}).")
+            f"<code>❕</code><b>Warn Event</b>\n"
+            f"<code> </code><b>•  User:</b> {mention_html(user.id, user.first_name)}\n"
+            f"<code> </code><b>•  Count:</b> {num_warns}/{limit}")
         if reason:
-            reply += f"\nReason: {html.escape(reason)}"
+            reply += f"\n<code> </code><b>•  Reason:</b> {html.escape(reason)}"
 
         log_reason = (f"<b>{html.escape(chat.title)}:</b>\n"
                       f"#WARN\n"
